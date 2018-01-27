@@ -19,27 +19,30 @@
 
     <div class="content" role="main">
         
-    <h1>python删除文件或目录</h1>
-<p>```
-def remove_path_or_file(path_or_file_name):
+    <h1>
+<a id="user-content-python删除文件或目录" class="anchor" href="#python%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E6%88%96%E7%9B%AE%E5%BD%95" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>python删除文件或目录</h1>
+<pre><code>def remove_path_or_file(path_or_file_name):
     """
         删除文件
     """
     import os
-    import shutil</p>
-<pre><code>if not os.path.exists(path_or_file_name):
-    import logging
-    logging.warning("{} not exists!".format(path_or_file_name))
-    return
+    import shutil
+    
+    if not os.path.exists(path_or_file_name):
+        import logging
+        logging.warning("{} not exists!".format(path_or_file_name))
+        return
+    
+    if os.path.isdir(path_or_file_name):
+        # dir
+        shutil.rmtree(path_or_file_name)
+    else:
+        # file
+        os.remove(path_or_file_name)
 
-if os.path.isdir(path_or_file_name):
-    # dir
-    shutil.rmtree(path_or_file_name)
-else:
-    # file
-    os.remove(path_or_file_name)
+
 </code></pre>
-<p>```</p>
+
 
     </div>
 

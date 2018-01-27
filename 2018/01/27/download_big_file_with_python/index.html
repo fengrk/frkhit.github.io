@@ -19,27 +19,29 @@
 
     <div class="content" role="main">
         
-    <h1>python下载大文件的方法</h1>
-<h2>1. wget</h2>
-<p>```
-def download_big_file_with_wget(url, target_file_name):
+    <h1>
+<a id="user-content-python下载大文件的方法" class="anchor" href="#python%E4%B8%8B%E8%BD%BD%E5%A4%A7%E6%96%87%E4%BB%B6%E7%9A%84%E6%96%B9%E6%B3%95" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>python下载大文件的方法</h1>
+<h2>
+<a id="user-content-1-wget" class="anchor" href="#1-wget" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>1. wget</h2>
+<pre><code>def download_big_file_with_wget(url, target_file_name):
     """
         使用wget下载大文件
         Note: 需要系统安装wget
     """
     import os
-    import subprocess</p>
-<pre><code>download_process = subprocess.Popen(["wget", "-c", "-O", target_file_name, "'{}'".format(url)])
+    import subprocess
+    
+    download_process = subprocess.Popen(["wget", "-c", "-O", target_file_name, "'{}'".format(url)])
+    
+    download_process.wait()
+    
+    if not os.path.exists(target_file_name):
+        raise Exception("fail to download file from {}".format(url))
 
-download_process.wait()
-
-if not os.path.exists(target_file_name):
-    raise Exception("fail to download file from {}".format(url))
 </code></pre>
-<p>```</p>
-<h2>2. python自带库</h2>
-<p>```
-def download_big_file(url, target_file_name):
+<h2>
+<a id="user-content-2-python自带库" class="anchor" href="#2-python%E8%87%AA%E5%B8%A6%E5%BA%93" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2. python自带库</h2>
+<pre><code>def download_big_file(url, target_file_name):
     """
         使用python核心库下载大文件
         ref: https://stackoverflow.com/questions/1517616/stream-large-binary-files-with-urllib2-to-file
@@ -50,17 +52,19 @@ def download_big_file(url, target_file_name):
         from urllib.request import urlopen
     else:
         # Python 2
-        from urllib2 import urlopen</p>
-<pre><code>response = urlopen(url)
-chunk = 16 * 1024
-with open(target_file_name, 'wb') as f:
-    while True:
-        chunk = response.read(chunk)
-        if not chunk:
-            break
-        f.write(chunk)
+        from urllib2 import urlopen
+    
+    response = urlopen(url)
+    chunk = 16 * 1024
+    with open(target_file_name, 'wb') as f:
+        while True:
+            chunk = response.read(chunk)
+            if not chunk:
+                break
+            f.write(chunk)
+
 </code></pre>
-<p>```</p>
+
 
     </div>
 

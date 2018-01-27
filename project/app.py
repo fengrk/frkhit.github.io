@@ -14,6 +14,14 @@ from flask_frozen import Freezer
 from werkzeug.utils import import_string
 
 
+def md2html_by_github(content):
+    """ use github api """
+    import requests
+    import json
+    url = "https://api.github.com/markdown"
+    return requests.post(url, data=json.dumps({"text": content, "mode": "markdown"})).text
+
+
 class Page(OldPage):
     def __init__(self, path, meta, body, html_renderer):
         """
@@ -36,7 +44,7 @@ class Page(OldPage):
         """The content of the page, rendered as HTML by the configured
         renderer.
         """
-        return self.html_renderer(self)
+        return md2html_by_github(self.body)
     
     @cached_property
     def meta(self):
