@@ -1,7 +1,7 @@
 <!doctype html>
 <head>
     <meta charset="utf-8">
-    <title>{% block page_title %}Your Site{% endblock %}</title>
+    <title>{% block page_title %}{% if page_title %}{{ page_title }}{% else %}日志{% endif %}{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     {% block css %}{% endblock %}
 

@@ -1,7 +1,7 @@
 <!doctype html>
 <head>
     <meta charset="utf-8">
-    <title>Your Site</title>
+    <title>python下载大文件的方法</title>
     <link rel="stylesheet" href="/frkhit.github.io/static/css/style.css">
     
 
@@ -23,7 +23,7 @@
     <p>2018-01-27</p>
     <h1>python下载大文件的方法</h1>
 <h2>1. wget</h2>
-<p>`
+<p>```
 def download_big_file_with_wget(url, target_file_name):
     """
         使用wget下载大文件
@@ -38,9 +38,9 @@ download_process.wait()
 if not os.path.exists(target_file_name):
     raise Exception("fail to download file from {}".format(url))
 </code></pre>
-<p>`</p>
+<p>```</p>
 <h2>2. python自带库</h2>
-<p>`
+<p>```
 def download_big_file(url, target_file_name):
     """
         使用python核心库下载大文件
@@ -62,7 +62,7 @@ with open(target_file_name, 'wb') as f:
             break
         f.write(chunk)
 </code></pre>
-<p>`</p>
+<p>```</p>
 
     </div>
 
