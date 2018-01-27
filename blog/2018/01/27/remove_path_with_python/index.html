@@ -1,0 +1,51 @@
+<!doctype html>
+<head>
+    <meta charset="utf-8">
+    <title>Your Site</title>
+    <link rel="stylesheet" href="/frkhit.github.io/static/css/style.css">
+    
+
+</head>
+<body class="box">
+
+<nav class="nav-menu">
+    <ul>
+        <li><a href="/frkhit.github.io/">首页</a></li>
+        <li><a href="https://github.com/frkhit/frkhit.github.io">源码</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+
+    <div class="content" role="main">
+        
+    <h1>python删除文件或目录</h1>
+    <p>2018-01-27</p>
+    <h1>python删除文件或目录</h1>
+<p>```
+def remove_path_or_file(path_or_file_name):
+    """
+        删除文件
+    """
+    import os
+    import shutil</p>
+<pre><code>if not os.path.exists(path_or_file_name):
+    import logging
+    logging.warning("{} not exists!".format(path_or_file_name))
+    return
+
+if os.path.isdir(path_or_file_name):
+    # dir
+    shutil.rmtree(path_or_file_name)
+else:
+    # file
+    os.remove(path_or_file_name)
+</code></pre>
+<p>```</p>
+
+    </div>
+
+</div><!-- end container -->
+<script src="/frkhit.github.io/static/js/script.js"></script>
+</body>
+</html>

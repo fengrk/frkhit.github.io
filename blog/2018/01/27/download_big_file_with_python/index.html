@@ -1,0 +1,72 @@
+<!doctype html>
+<head>
+    <meta charset="utf-8">
+    <title>Your Site</title>
+    <link rel="stylesheet" href="/frkhit.github.io/static/css/style.css">
+    
+
+</head>
+<body class="box">
+
+<nav class="nav-menu">
+    <ul>
+        <li><a href="/frkhit.github.io/">首页</a></li>
+        <li><a href="https://github.com/frkhit/frkhit.github.io">源码</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+
+    <div class="content" role="main">
+        
+    <h1>python下载大文件的方法</h1>
+    <p>2018-01-27</p>
+    <h1>python下载大文件的方法</h1>
+<h2>1. wget</h2>
+<p>`
+def download_big_file_with_wget(url, target_file_name):
+    """
+        使用wget下载大文件
+        Note: 需要系统安装wget
+    """
+    import os
+    import subprocess</p>
+<pre><code>download_process = subprocess.Popen(["wget", "-c", "-O", target_file_name, "'{}'".format(url)])
+
+download_process.wait()
+
+if not os.path.exists(target_file_name):
+    raise Exception("fail to download file from {}".format(url))
+</code></pre>
+<p>`</p>
+<h2>2. python自带库</h2>
+<p>`
+def download_big_file(url, target_file_name):
+    """
+        使用python核心库下载大文件
+        ref: https://stackoverflow.com/questions/1517616/stream-large-binary-files-with-urllib2-to-file
+    """
+    import sys
+    if sys.version_info &gt; (2, 7):
+        # Python 3
+        from urllib.request import urlopen
+    else:
+        # Python 2
+        from urllib2 import urlopen</p>
+<pre><code>response = urlopen(url)
+chunk = 16 * 1024
+with open(target_file_name, 'wb') as f:
+    while True:
+        chunk = response.read(chunk)
+        if not chunk:
+            break
+        f.write(chunk)
+</code></pre>
+<p>`</p>
+
+    </div>
+
+</div><!-- end container -->
+<script src="/frkhit.github.io/static/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!doctype html>
+<head>
+    <meta charset="utf-8">
+    <title>Your Site</title>
+    <link rel="stylesheet" href="/frkhit.github.io/static/css/style.css">
+    
+
+</head>
+<body class="box">
+
+<nav class="nav-menu">
+    <ul>
+        <li><a href="/frkhit.github.io/">首页</a></li>
+        <li><a href="https://github.com/frkhit/frkhit.github.io">源码</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+
+    <div class="content" role="main">
+        
+    <h1>shadowsocks+privoxy设置本地代理</h1>
+    <p>2018-01-27</p>
+    <h1>shadowsocks+privoxy设置本地代理</h1>
+<ul>
+<li>1.sslocal启动, 本地监听1080端口</li>
+<li>2.安装privoxy, <code>sudo apt install -y privoxy</code></li>
+<li>3.配置privoxy
+```
+sudo vim /etc/privoxy/config</li>
+</ul>
+<h1>添加一行</h1>
+<p>forward-socks5 / 127.0.0.1:1080 .</p>
+<p>```</p>
+<ul>
+<li>4.重启privoxy， <code>/etc/init.d/privoxy restart</code></li>
+<li>5.python中使用proxy</li>
+</ul>
+<p>```
+def set_proxy():
+    import os
+    os.environ["https_proxy"] = "http://127.0.0.1:8118"
+    os.environ["HTTPS_PROXY"] = "http://127.0.0.1:8118"
+    os.environ["http_proxy"] = "http://127.0.0.1:8118"
+    os.environ["HTTP_PROXY"] = "http://127.0.0.1:8118"</p>
+<p>if <strong>name</strong> == '<strong>main</strong>':
+    import requests</p>
+<pre><code>try:
+    print(requests.get("https://www.google.com").status_code)  # raise Exception
+except Exception as e:
+    print(e)
+
+set_proxy()
+
+print(requests.get("https://www.google.com").status_code)  # 200
+</code></pre>
+<p>```</p>
+
+    </div>
+
+</div><!-- end container -->
+<script src="/frkhit.github.io/static/js/script.js"></script>
+</body>
+</html>
