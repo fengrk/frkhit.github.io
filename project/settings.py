@@ -18,11 +18,10 @@ def parent_dir(path):
 
 
 PROJECT_ROOT = parent_dir(APP_DIR)
-blog_path = os.path.join(PROJECT_ROOT, "blog")
-if not os.path.exists(blog_path):
-    os.makedirs(blog_path)
+if not os.path.exists(PROJECT_ROOT):
+    os.makedirs(PROJECT_ROOT)
 
-FREEZER_DESTINATION = blog_path
+FREEZER_DESTINATION = PROJECT_ROOT
 # Since this is a repo page (not a Github user page),
 # we need to set the BASE_URL to the correct url as per GH Pages' standards
 FREEZER_BASE_URL = "http://localhost/{0}".format(REPO_NAME)
