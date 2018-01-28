@@ -1,0 +1,35 @@
+<!doctype html>
+<head>
+    <meta charset="utf-8">
+    <title>ssh over socks5</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    
+
+</head>
+<body class="box">
+
+<nav class="nav-menu">
+    <ul>
+        <li><a href="/">首页</a></li>
+        <li><a href="https://github.com/frkhit/frkhit.github.io">源码</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+
+    <div class="content" role="main">
+        
+    <h1>
+<a id="user-content-ssh-over-socks5" class="anchor" href="#ssh-over-socks5" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>ssh over socks5</h1>
+<pre><code>ssh -o ProxyCommand='nc -x 127.0.0.1:1080 %h %p' remote_user@remote_ssh_server
+
+</code></pre>
+<p><a href="https://ieevee.com/tech/2017/10/19/ssh-over-socks5.html" rel="nofollow">参考</a></p>
+
+
+    </div>
+
+</div><!-- end container -->
+<script src="/static/js/script.js"></script>
+</body>
+</html>
