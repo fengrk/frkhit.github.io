@@ -1,0 +1,43 @@
+<!doctype html>
+<head>
+    <meta charset="utf-8">
+    <title>安装docker-compose</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    
+
+</head>
+<body class="box">
+
+<nav class="nav-menu">
+    <ul>
+        <li><a href="/">首页</a></li>
+        <li><a href="https://github.com/frkhit/frkhit.github.io">源码</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+
+    <div class="content" role="main">
+        
+    <h1>
+<a id="user-content-安装docker-compose" class="anchor" href="#%E5%AE%89%E8%A3%85docker-compose" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>安装docker-compose</h1>
+<h2>
+<a id="user-content-1pip-install-docker-compose" class="anchor" href="#1pip-install-docker-compose" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>1.pip install docker-compose</h2>
+<p>存在问题：依赖包docker,docker-py分不清，出现各种问题。</p>
+<h2>
+<a id="user-content-2github-release安装包安装" class="anchor" href="#2github-release%E5%AE%89%E8%A3%85%E5%8C%85%E5%AE%89%E8%A3%85" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.github release安装包安装</h2>
+<pre><code>wget 'https://github-production-release-asset-2e65be.s3.amazonaws.com/15045751/fa6c5b98-028b-11e8-9248-eb939dd05ee6?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20180201%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20180201T170222Z&amp;X-Amz-Expires=300&amp;X-Amz-Signature=d9809e85147280ffca3db30cd589fce63bea6c63ec3d42c1fac474ca7db1599a&amp;X-Amz-SignedHeaders=host&amp;actor_id=15940906&amp;response-content-disposition=attachment%3B%20filename%3Ddocker-compose-Linux-x86_64&amp;response-content-type=application%2Foctet-stream' -O docker-compose
+
+sudo mv docker-compose /user/local/bin/ &amp;&amp; sudo chmod +x /user/local/bin/docker-compose
+
+docker-compose --version
+
+</code></pre>
+
+
+    </div>
+
+</div><!-- end container -->
+<script src="/static/js/script.js"></script>
+</body>
+</html>
