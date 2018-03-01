@@ -2,7 +2,7 @@
 
 ## 1. 解决中文乱码的一种可行方法
 
-`
+```
 # -*- coding:utf-8 -*-
 from __future__ import unicode_literals
 
@@ -38,7 +38,7 @@ if __name__ == '__main__':
     a = requests.get("https://www.baidu.com").content
     print(smart_decoder(a))
 
-`
+```
 
 ## 2. requests响应结果乱码
 
