@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="utf-8">
+    <title>ubuntu环境变量设置</title>
+    <link rel="stylesheet" href="/static/css/github.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    
+
+</head>
+<body class="box">
+
+<nav class="nav-menu">
+    <ul>
+        <li><a href="/">首页</a></li>
+        <li><a href="https://github.com/frkhit/frkhit.github.io">源码</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+
+    <div class="content" role="main">
+        
+    <h1>
+<a id="user-content-ubuntu环境变量设置" class="anchor" href="#ubuntu%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E8%AE%BE%E7%BD%AE" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>ubuntu环境变量设置</h1>
+<p>设置/etc/profile</p>
+<pre><code>vim /etc/profile
+</code></pre>
+<p>在文件后面添加</p>
+<pre><code>#set zookeeper environment
+
+export ZOOKEEPER_HOME=/home/mokiwi/zookeeper
+export PATH=$PATH:$ZOOKEEPER_HOME/bin:$ZOOKEEPER_HOME/conf
+
+</code></pre>
+<p>保存退出，这时候新PATH还没有生效，执行下面命令</p>
+<pre><code>source /etc/profile
+</code></pre>
+
+
+    </div>
+
+</div><!-- end container -->
+<script src="/static/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="utf-8">
+    <title>python3安装mysql</title>
+    <link rel="stylesheet" href="/static/css/github.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    
+
+</head>
+<body class="box">
+
+<nav class="nav-menu">
+    <ul>
+        <li><a href="/">首页</a></li>
+        <li><a href="https://github.com/frkhit/frkhit.github.io">源码</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+
+    <div class="content" role="main">
+        
+    <h1>
+<a id="user-content-python3安装mysql" class="anchor" href="#python3%E5%AE%89%E8%A3%85mysql" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>python3安装mysql</h1>
+<p>执行</p>
+<pre><code>pip3 install mysqlclient
+</code></pre>
+<p>报错：</p>
+<pre><code>OSError: mysql_config not found
+</code></pre>
+<p>解决：</p>
+<pre><code>sudo apt-get install libmysqlclient-dev
+</code></pre>
+<p>再次执行</p>
+<pre><code>pip3 install mysqlclient
+</code></pre>
+
+
+    </div>
+
+</div><!-- end container -->
+<script src="/static/js/script.js"></script>
+</body>
+</html>
