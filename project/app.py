@@ -41,7 +41,7 @@ class SingletonMixin(object):
         return cls.__singleton_instance
 
 
-class SimpleCache(SingletonMixin):
+class HtmlCache(SingletonMixin):
     def __init__(self):
         from project.settings import PROJECT_ROOT
         
@@ -51,35 +51,41 @@ class SimpleCache(SingletonMixin):
     def instance(cls):
         """
 
-        :rtype: SimpleCache
+        :rtype: HtmlCache
         """
-        return super(SimpleCache, cls).instance()
+        return super(HtmlCache, cls).instance()
     
-    def get(self, key):
+    def get_content_id_and_html(self, md_id):
+        """
+
+        :type md_id: str
+        :rtype: (str, str)
+        """
         conn = self._get_connect()
         
         try:
-            sql = "SELECT VALUE from CACHE where UID = ?"
-            cursor = conn.cursor().execute(sql, (key,))
+            sql = "SELECT CID, VALUE from CACHE where MID = ?"
+            cursor = conn.cursor().execute(sql, (md_id,))
             for row in cursor:
-                return row[0]
+                return row[0], row[1]
         except Exception as e:
             print(e)
-            return None
         finally:
             conn.close()
+        
+        return None, None
     
-    def set(self, key, value):
+    def set_content_id_and_html(self, md_id, content_id, html_value):
         conn = self._get_connect()
         
         try:
-            old_value = self.get(key)
-            if old_value is None:
-                sql = "INSERT INTO CACHE(ID, VALUE, UID) VALUES (NULL, ?, ?)"
+            old_content_id, old_html = self.get_content_id_and_html(md_id=md_id)
+            if old_content_id is None and old_html is None:
+                sql = "INSERT INTO CACHE(ID, VALUE, CID, MID) VALUES (NULL, ?, ?, ?)"
             else:
-                sql = "UPDATE CACHE SET VALUE = ? where UID = ?"
+                sql = "UPDATE CACHE SET VALUE = ?, CID = ? where MID = ?"
             
-            conn.cursor().execute(sql, (value, key))
+            conn.cursor().execute(sql, (html_value, content_id, md_id))
             conn.commit()
         except Exception as e:
             print(e)
@@ -91,9 +97,11 @@ class SimpleCache(SingletonMixin):
         if not os.path.exists(self.cache_file):
             conn = sqlite3.connect(self.cache_file)
             c = conn.cursor()
-            c.execute(
-                'CREATE TABLE CACHE (ID INTEGER PRIMARY KEY AUTOINCREMENT, VALUE TEXT, UID CHAR(32) UNIQUE NOT NULL);'
-            )
+            c.execute('''CREATE TABLE CACHE
+                   (ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                   MID CHAR(32) UNIQUE NOT NULL,
+                   CID CHAR(32) NOT NULL,
+                   VALUE TEXT);''')
             conn.commit()
             conn.close()
         
@@ -136,13 +144,14 @@ class Page(OldPage):
         """The content of the page, rendered as HTML by the configured
         renderer.
         """
-        body_id = get_md5(self.body.encode("utf-8"))
+        file_name_id = get_md5(self.path.encode("utf-8"))
         
-        content_html = SimpleCache.instance().get(body_id)
+        old_content_id, content_html = HtmlCache.instance().get_content_id_and_html(file_name_id)
+        current_content_id = get_md5(self.body.encode("utf-8"))
         
-        if content_html is None:
+        if content_html is None or old_content_id != current_content_id:
             content_html = md2html_by_github(self.body)
-            SimpleCache.instance().set(body_id, content_html)
+            HtmlCache.instance().set_content_id_and_html(file_name_id, current_content_id, content_html)
         
         return content_html
     
