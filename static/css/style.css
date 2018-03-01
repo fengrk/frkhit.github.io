@@ -1,8 +1,14 @@
 /* Layout */
 
+
 .box {
     width: 900px;
     margin: 40px auto;
+}
+
+body {
+    font-size: 14px;
+    font-weight: 300;
 }
 
 nav ul, nav ul li {
