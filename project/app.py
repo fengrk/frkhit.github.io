@@ -2,9 +2,12 @@
 from __future__ import absolute_import
 
 import datetime
+import hashlib
 import operator
 import os
 import re
+import sqlite3
+import threading
 from itertools import takewhile
 
 from flask import Flask
@@ -14,8 +17,97 @@ from flask_frozen import Freezer
 from werkzeug.utils import import_string
 
 
+class SingletonMixin(object):
+    """
+    thread safe singleton base class
+    refer: https://gist.github.com/werediver/4396488
+
+    # Based on tornado.ioloop.IOLoop.instance() approach.
+    # See https://github.com/facebook/tornado
+    """
+    __singleton_lock = threading.Lock()
+    __singleton_instance = None
+    
+    @classmethod
+    def instance(cls):
+        """
+
+        :rtype: SingletonMixin
+        """
+        if not cls.__singleton_instance:
+            with cls.__singleton_lock:
+                if not cls.__singleton_instance:
+                    cls.__singleton_instance = cls()
+        return cls.__singleton_instance
+
+
+class SimpleCache(SingletonMixin):
+    def __init__(self):
+        from project.settings import PROJECT_ROOT
+        
+        self.cache_file = os.path.join(PROJECT_ROOT, "./cache.dat")
+    
+    @classmethod
+    def instance(cls):
+        """
+
+        :rtype: SimpleCache
+        """
+        return super(SimpleCache, cls).instance()
+    
+    def get(self, key):
+        conn = self._get_connect()
+        
+        try:
+            sql = "SELECT VALUE from CACHE where UID = ?"
+            cursor = conn.cursor().execute(sql, (key,))
+            for row in cursor:
+                return row[0]
+        except Exception as e:
+            print(e)
+            return None
+        finally:
+            conn.close()
+    
+    def set(self, key, value):
+        conn = self._get_connect()
+        
+        try:
+            old_value = self.get(key)
+            if old_value is None:
+                sql = "INSERT INTO CACHE(ID, VALUE, UID) VALUES (NULL, ?, ?)"
+            else:
+                sql = "UPDATE CACHE SET VALUE = ? where UID = ?"
+            
+            conn.cursor().execute(sql, (value, key))
+            conn.commit()
+        except Exception as e:
+            print(e)
+            return None
+        finally:
+            conn.close()
+    
+    def _get_connect(self):
+        if not os.path.exists(self.cache_file):
+            conn = sqlite3.connect(self.cache_file)
+            c = conn.cursor()
+            c.execute(
+                'CREATE TABLE CACHE (ID INTEGER PRIMARY KEY AUTOINCREMENT, VALUE TEXT, UID CHAR(32) UNIQUE NOT NULL);'
+            )
+            conn.commit()
+            conn.close()
+        
+        return sqlite3.connect(self.cache_file)
+
+
+def get_md5(string):
+    hash_md5 = hashlib.md5(string)
+    return hash_md5.hexdigest()
+
+
 def md2html_by_github(content):
     """ use github api """
+    print("requesting github...")
     import requests
     import json
     url = "https://api.github.com/markdown"
@@ -44,7 +136,15 @@ class Page(OldPage):
         """The content of the page, rendered as HTML by the configured
         renderer.
         """
-        return md2html_by_github(self.body)
+        body_id = get_md5(self.body.encode("utf-8"))
+        
+        content_html = SimpleCache.instance().get(body_id)
+        
+        if content_html is None:
+            content_html = md2html_by_github(self.body)
+            SimpleCache.instance().set(body_id, content_html)
+        
+        return content_html
     
     @cached_property
     def meta(self):
