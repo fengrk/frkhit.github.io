@@ -32,6 +32,9 @@ python freeze.py
 git push origin master
 ```
 
+## 感谢
+该项目主要参考了[pierrebarroca.github.io](https://github.com/pierrebarroca/pierrebarroca.github.io).感谢作者[@pierrebarroca](https://github.com/pierrebarroca)的分享!
+
 
 
 
