@@ -1,10 +1,11 @@
-# -*- coding: utf-8 -*-
+# -*- coding:utf-8 -*-
 from __future__ import unicode_literals
+from __future__ import absolute_import
 
 from flask import render_template
 
-from app import app, pages
-from settings import GIT_PATH
+from project.app import app, pages
+from project.settings import GIT_PATH
 
 
 @app.route('/')
