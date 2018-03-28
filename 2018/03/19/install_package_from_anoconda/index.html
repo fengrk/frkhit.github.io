@@ -36,11 +36,11 @@ conda install faiss-gpu -c pytorch
 <a id="user-content-解决方案" class="anchor" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>解决方案</h2>
 <p>下载anaconda中编译包,解压后,复制到虚拟环境中.</p>
 <p>代码:</p>
-<pre><code>!wget  https://anaconda.org/pytorch/faiss-cpu/1.2.1/download/linux-64/faiss-cpu-1.2.1-py36_cuda9.0.176_1.tar.bz2
-!tar xvjf faiss-cpu-1.2.1-py36_cuda9.0.176_1.tar.bz2
-!cp -r lib/python3.6/site-packages/* env/lib/python3.6/site-packages/
-!rm lib/ -R &amp;&amp; rm faiss-cpu-1.2.1-py36_cuda9.0.176_1.tar.bz2
-!pip install mkl
+<pre><code>wget  https://anaconda.org/pytorch/faiss-cpu/1.2.1/download/linux-64/faiss-cpu-1.2.1-py36_cuda9.0.176_1.tar.bz2
+tar xvjf faiss-cpu-1.2.1-py36_cuda9.0.176_1.tar.bz2
+cp -r lib/python3.6/site-packages/* env/lib/python3.6/site-packages/
+rm lib/ -R &amp;&amp; rm faiss-cpu-1.2.1-py36_cuda9.0.176_1.tar.bz2
+pip install mkl
 
 </code></pre>
 <h2>

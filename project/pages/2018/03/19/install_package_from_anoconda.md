@@ -20,11 +20,11 @@ conda install faiss-gpu -c pytorch
 代码:
 
 ```
-!wget  https://anaconda.org/pytorch/faiss-cpu/1.2.1/download/linux-64/faiss-cpu-1.2.1-py36_cuda9.0.176_1.tar.bz2
-!tar xvjf faiss-cpu-1.2.1-py36_cuda9.0.176_1.tar.bz2
-!cp -r lib/python3.6/site-packages/* env/lib/python3.6/site-packages/
-!rm lib/ -R && rm faiss-cpu-1.2.1-py36_cuda9.0.176_1.tar.bz2
-!pip install mkl
+wget  https://anaconda.org/pytorch/faiss-cpu/1.2.1/download/linux-64/faiss-cpu-1.2.1-py36_cuda9.0.176_1.tar.bz2
+tar xvjf faiss-cpu-1.2.1-py36_cuda9.0.176_1.tar.bz2
+cp -r lib/python3.6/site-packages/* env/lib/python3.6/site-packages/
+rm lib/ -R && rm faiss-cpu-1.2.1-py36_cuda9.0.176_1.tar.bz2
+pip install mkl
 
 ```
 
