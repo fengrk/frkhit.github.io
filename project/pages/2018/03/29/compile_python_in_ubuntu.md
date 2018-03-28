@@ -24,11 +24,9 @@ chmod +x DCIPy.sh
 # 安装python3.6.4
 ./DCIPy.sh 3.6.4
 
-# 更新python3
-sudo rm /usr/bin/python3 && sudo ln /usr/local/bin/python3 /usr/bin/python3
-
 # 确认
 python3 --version
+which python3
 ```
 
 ## 致谢
