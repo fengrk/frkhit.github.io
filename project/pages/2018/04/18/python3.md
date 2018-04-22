@@ -1,0 +1,43 @@
+# Ubuntu16.04下配置python3环境
+
+## 1.默认使用python3.6
+
+首先按照教程[]安装python3.6环境。
+
+
+配置环境：
+
+```
+# 默认python3
+echo "alias python=python3" | sudo tee -a /etc/profile
+echo "alias python=python3" | tee -a ~/.bashrc
+
+# 默认pip3
+echo "alias pip=pip3" | sudo tee -a /etc/profile
+echo "alias pip=pip3" | tee -a ~/.bashrc
+
+# 激活配置
+source /etc/profile
+source ~/.bashrc
+
+```
+## 2.修改pypi源
+
+新建pip.conf文件
+
+```
+mkdir ~/.pip
+vim ~/.pip/pip.conf
+
+```
+pip.conf中添加内容：
+
+```
+[global]
+index-url = http://pypi.mirrors.ustc.edu.cn/simple/
+
+[install]
+trusted-host=pypi.mirrors.ustc.edu.cn
+
+```
+
