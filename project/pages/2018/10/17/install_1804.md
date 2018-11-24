@@ -1,0 +1,33 @@
+# install ubuntu18.04
+
+# 1. apt source list
+
+## 1.1 备份你的原镜像文件，以免出错后可以恢复
+```
+mv /etc/apt/sources.list /etc/apt/sources.list.bak
+```
+
+## 1.2 编辑sources.list
+
+```
+deb http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
+```
+
+## 1.3 更新
+```
+sudo apt clean && sudo apt update && sudo apt upgrade -y
+
+```
+
+# 2. 配置python3.6
+
+
