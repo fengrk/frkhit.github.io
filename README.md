@@ -33,8 +33,8 @@ git push origin master
 ```
 
 ## 感谢
-该项目主要参考了[pierrebarroca.github.io](https://github.com/pierrebarroca/pierrebarroca.github.io).感谢作者[@pierrebarroca](https://github.com/pierrebarroca)的分享!
-
+- python版本参考[pierrebarroca.github.io](https://github.com/pierrebarroca/pierrebarroca.github.io)
+- 新版本采用[lay1010.github.io](https://github.com/lay1010/lay1010.github.io)的模板
 
 
 
