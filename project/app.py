@@ -119,6 +119,22 @@ def get_md5(string):
     return hash_md5.hexdigest()
 
 
+class UrlTemplate(object):
+    @classmethod
+    def decode(cls, path):
+        """ file path to url"""
+        if not path.endswith(".html"):
+            path += ".html"
+        return path
+
+    @classmethod
+    def encode(cls, url):
+        """url to file path"""
+        if url.endswith(".html"):
+            return url[:-5]
+        return url
+
+
 class HtmlCache(object):
     from project.settings import PROJECT_ROOT
     cache = SqliteCache(os.path.join(PROJECT_ROOT, "./cache.dat"))
@@ -155,10 +171,10 @@ class Page(OldPage):
         :type meta: str
         :type path: str
         """
-        super(Page, self).__init__(path, meta, body, html_renderer)
+        super(Page, self).__init__(UrlTemplate.decode(path), meta, body, html_renderer)
 
         # date re
-        self.date_re = re.compile(r"[\d]{4}/[\d]{2}/[\d]{2}(?=/)")
+        self.date_re = re.compile(r"[\d]{4}-[\d]{2}-[\d]{2}(?=-)")
 
         # 执行meta方法
         if self.meta:
@@ -175,8 +191,15 @@ class Page(OldPage):
         current_content_id = get_md5(self.body.encode("utf-8"))
 
         if content_html is None or old_content_id != current_content_id:
-            content_html = md2html_by_github(self.body)
-            HtmlCache.set_content_id_and_html(file_name_id, current_content_id, content_html)
+            content_html = None
+            try:
+                content_html = md2html_by_github(self.body)
+                msg = json.loads(content_html)
+                logger.warning("get msg from github: {}".format(msg))
+            except Exception as e:
+                logger.error(e)
+                if content_html is not None:
+                    HtmlCache.set_content_id_and_html(file_name_id, current_content_id, content_html)
 
         return content_html
 
@@ -218,12 +241,12 @@ class Page(OldPage):
 
     def _get_date_from_path(self, path):
         """
-            文件命名: /2018/01/31/xxx.md
+            文件命名: 2018-01-31-xxx.md
         :rtype: datetime.date
         """
         result = self.date_re.findall(path)
         if result:
-            return datetime.datetime.strptime(result[0], "%Y/%m/%d").date()
+            return datetime.datetime.strptime(result[0], "%Y-%m-%d").date()
         return None
 
 

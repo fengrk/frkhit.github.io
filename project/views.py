@@ -1,10 +1,9 @@
 # -*- coding:utf-8 -*-
-from __future__ import unicode_literals
 from __future__ import absolute_import
 
 from flask import render_template
 
-from project.app import app, pages
+from project.app import app, pages, UrlTemplate
 from project.settings import GIT_PATH
 
 
@@ -16,9 +15,9 @@ def home():
     return render_template('index.html', pages=sorted_posts, git_path=GIT_PATH, page_title="目录")
 
 
-@app.route('/<path:path>/')
-def page(path):
+@app.route('/page/<path:path>')
+def page(path: str):
     # Path is the filename of a page, without the file extension
     # e.g. "first-post"
-    _page = pages.get_or_404(path)
+    _page = pages.get_or_404(UrlTemplate.encode(path))
     return render_template('page.html', page=_page, git_path=GIT_PATH, page_title=_page.meta["title"])
