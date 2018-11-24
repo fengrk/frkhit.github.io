@@ -1,3 +1,12 @@
+---
+layout: post
+title: python3安装mysql
+category: 技术
+tags: python
+keywords: 
+description: 
+---
+
 # python3安装mysql
 
 执行

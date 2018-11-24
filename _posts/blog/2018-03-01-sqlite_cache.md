@@ -1,3 +1,12 @@
+---
+layout: post
+title: 基于sqlite3实现数据缓存
+category: 技术
+tags: python
+keywords: 
+description: 
+---
+
 # 基于sqlite3实现数据缓存
 
 ```

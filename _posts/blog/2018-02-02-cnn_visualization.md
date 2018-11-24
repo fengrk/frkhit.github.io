@@ -1,3 +1,12 @@
+---
+layout: post
+title: CNN可视化研究
+category: 技术
+tags: CNN
+keywords: 
+description: 
+---
+
 # CNN可视化研究
 
 ## 1.AlexNe可视化

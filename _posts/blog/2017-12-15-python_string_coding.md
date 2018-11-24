@@ -1,3 +1,12 @@
+---
+layout: post
+title: 解决python中遇到的乱码问题
+category: 技术
+tags: python
+keywords: 
+description: 
+---
+
 # 解决python中遇到的乱码问题
 
 ## 1. 解决中文乱码的一种可行方法

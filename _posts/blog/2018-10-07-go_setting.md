@@ -1,3 +1,12 @@
+---
+layout: post
+title: golang setting
+category: 技术
+tags: golang
+keywords: 
+description: 
+---
+
 # golang setting
 
 # 1.go get 网络连接问题

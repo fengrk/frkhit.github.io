@@ -1,3 +1,12 @@
+---
+layout: post
+title: Ubuntu16.04下源码安装python3.6
+category: 技术
+tags: python
+keywords: 
+description: 
+---
+
 # Ubuntu16.04下源码安装python3.6
 
 通过apt安装的python3.6, 执行`import sqlite3`时出现错误:

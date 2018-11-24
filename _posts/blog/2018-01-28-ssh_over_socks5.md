@@ -1,3 +1,12 @@
+---
+layout: post
+title: ssh over socks5
+category: 技术
+tags: ssh
+keywords: 
+description: 
+---
+
 # ssh over socks5
 
 ```

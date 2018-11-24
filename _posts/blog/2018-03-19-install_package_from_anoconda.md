@@ -1,3 +1,12 @@
+---
+layout: post
+title: virtualenv中安装anaconda模块
+category: 技术
+tags: python
+keywords: 
+description: 
+---
+
 # virtualenv中安装anaconda模块
 
 faiss是Facebook AI实验室开源的一个高性能的相似性搜索库,该项目提供了python接口.faiss提供了源码编译和anaconda的两种安装方法. 但要在现有的virtualenv中安装faiss,却不容易.

@@ -1,3 +1,12 @@
+---
+layout: post
+title: 修复colaboratory中tensorflow的bug
+category: 技术
+tags: python
+keywords: 
+description: 
+---
+
 # 修复colaboratory中tensorflow的bug
 
 colaboratory是google推出的类似jupyter的一款产品. 免费使用，提供一个gpu，cpu内存约为12GB. 配合google drive, 可方便进行机器学习的练习. 

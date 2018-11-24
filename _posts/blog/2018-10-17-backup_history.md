@@ -1,3 +1,12 @@
+---
+layout: post
+title: 定时备份linux系统的history记录
+category: 技术
+tags: python, linux
+keywords: 
+description: 
+---
+
 # 定时备份linux系统的history记录
 
 # 1. `~`下新建`backup_history.py`文件

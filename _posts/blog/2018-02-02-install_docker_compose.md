@@ -1,3 +1,12 @@
+---
+layout: post
+title: 安装docker-compose
+category: 技术
+tags: docker
+keywords: 
+description: 
+---
+
 # 安装docker-compose
 
 ## 1.pip install docker-compose

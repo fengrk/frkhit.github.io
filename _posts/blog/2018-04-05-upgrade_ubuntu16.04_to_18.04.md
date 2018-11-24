@@ -1,3 +1,12 @@
+---
+layout: post
+title: 将Ubuntu16.04升级为Ubuntu18.04(development branch)
+category: 技术
+tags: ubuntu
+keywords: 
+description: 
+---
+
 # 将Ubuntu16.04升级为Ubuntu18.04(development branch)
 
 ## 0.备份Ubuntu16.04

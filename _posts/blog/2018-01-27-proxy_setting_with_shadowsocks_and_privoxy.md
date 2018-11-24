@@ -1,3 +1,12 @@
+---
+layout: post
+title: shadowsocks+privoxy设置本地代理
+category: 技术
+tags: shadowsocks
+keywords: 
+description: 
+---
+
 # shadowsocks+privoxy设置本地代理
 
 - 1.sslocal启动, 本地监听1080端口

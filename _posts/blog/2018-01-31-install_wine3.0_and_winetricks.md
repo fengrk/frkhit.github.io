@@ -1,3 +1,12 @@
+---
+layout: post
+title: 在ubuntu16.04中安装wine3.0+winetricks
+category: 技术
+tags: ubuntu
+keywords: 
+description: 
+---
+
 # 在ubuntu16.04中安装wine3.0+winetricks
 
 ## 1.新建install_wine.sh脚本

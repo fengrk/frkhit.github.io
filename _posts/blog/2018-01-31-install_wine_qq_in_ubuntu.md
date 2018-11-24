@@ -1,3 +1,12 @@
+---
+layout: post
+title: ubuntu16.04中安装wine-qq
+category: 技术
+tags: ubuntu
+keywords: 
+description: 
+---
+
 # ubuntu16.04中安装wine-qq
 
 ## 1.安装wine3.0+winetricks

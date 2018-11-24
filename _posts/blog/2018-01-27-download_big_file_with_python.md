@@ -1,3 +1,12 @@
+---
+layout: post
+title: python下载大文件的方法
+category: 技术
+tags: python
+keywords: 
+description: 
+---
+
 # python下载大文件的方法
 
 ## 1. wget

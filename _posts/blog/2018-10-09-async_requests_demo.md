@@ -1,3 +1,12 @@
+---
+layout: post
+title: asyncio异步请求示例
+category: 技术
+tags: python
+keywords: 
+description: 
+---
+
 # asyncio异步请求示例
 
 # 1. 不返回结果
