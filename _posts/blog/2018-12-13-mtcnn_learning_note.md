@@ -1,3 +1,12 @@
+---
+layout: post
+title: mtcnn读书笔记
+category: 技术
+tags: tensorflow,cnn
+keywords: 
+description: 
+---
+
 # mtcnn读书笔记
 
 # 1. mtcnn网络结构
