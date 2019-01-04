@@ -9,12 +9,12 @@ description:
 
 # git使用笔记
 
-# old mode 100755 new mode 100644
+# 1.old mode 100755 new mode 100644
 ```
 git config core.filemode false
 ```
 
-# 换行符问题
+# 2.换行符问题
 [参考](https://juejin.im/post/5ad21df05188257cc20db9de)
 
 原因: git为了统一入库文件统一使用'\n'为换行符. 检出时根据配置转换换行符; 入库时自动转为'\n'. 但在中文环境中,该机制出问题.
@@ -54,13 +54,36 @@ fore change crlf if found error before `git commit`
  python -c "from pytools import git_crlf_helper as g;g()" -d . -t lf -i *.py -e *.pyc
 ```
 
-# 删除历史记录
+# 3.删除历史记录
 - [参考](http://www.cnblogs.com/shines77/p/3460274.html)
-- 代码
-```
-# 删除历史记录中的 path-to-your-remove-file
-git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch path-to-your-remove-file' --prune-empty --tag-name-filter cat -- --all
+- 删除历史记录中的 path-to-your-remove-file
 
-# 推送至服务器
+```
+git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch path-to-your-remove-file' --prune-empty --tag-name-filter cat -- --all
+```
+- 推送至服务器
+```
 git push origin master --force --all
 ```
+
+# 4.子模块
+- 添加子模块
+```
+git submodule add https://github.com/tensorflow/tensorflow sub/tensorflow
+```
+- 更新所有子模块
+```
+git submodule foreach git pull
+```
+
+# 5.merge commits
+- merge all commits into one on a branch
+```
+git merge --squash feature-branch && git commit -m "all commits"
+```
+
+# 6.github without password
+- set ssh key
+- `cd ./pyxtools/ && git remote set-url origin git@github.com:frkhit/pyxtools.git`
+
+
