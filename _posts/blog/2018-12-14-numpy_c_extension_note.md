@@ -47,7 +47,7 @@ void init_dilation()
 修改为:
 
 ```
-/* === Initialine the C_test functions ====================== */
+/* ==== Initialize the C_test functions ====================== */
 /* This initiates the module using the above definitions. */
 #if PY_VERSION_HEX >= 0x03000000
 static struct PyModuleDef moduledef = {
@@ -64,22 +64,14 @@ static struct PyModuleDef moduledef = {
 
 PyMODINIT_FUNC PyInit__dilation(void)
 {
-    PyObject *m;
-    m = PyModule_Create(&moduledef);
-    if (!m) {
-        return NULL;
-    }
-    return m;
+    import_array();
+    return PyModule_Create(&moduledef);
 }
 #else
 PyMODINIT_FUNC init_dilation(void)
 {
-    PyObject *m;
-
-    m = Py_InitModule("_dilation", dilationmethods);
-    if (m == NULL) {
-        return;
-    }
+    (void) Py_InitModule("_dilation", dilationmethods);
+    import_array();
 }
 #endif
 ```
