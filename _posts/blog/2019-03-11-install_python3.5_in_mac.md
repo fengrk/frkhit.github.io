@@ -1,15 +1,15 @@
 ---
 layout: post
-title: install python3.5 in mac
+title: mac中安装python3.5
 category: 技术
 tags: mac
-keywords:python 
+keywords:
 description: 
 ---
 
-# install python3.5 in mac
+# mac中安装python3.5
 
-mac中需要安装python3.5的环境，而mac自带python2.7的环境。
+mac 10.13.6 中需要安装python3.5的环境，而mac自带python2.7的环境。
 
 尝试使用brew命令安装python3.5,失败。
 
