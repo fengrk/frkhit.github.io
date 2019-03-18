@@ -99,3 +99,16 @@ git config --global --unset https.proxy
 ```
 - or, edit `~/.gitconfig`
 
+# 8.multi user
+实现不同项目使用不同用户, 关键是设置gitconfig文件
+
+全局配置:
+```
+vim ~/.gitconfig
+```
+
+项目配置
+```
+vim .git/config
+```
+
