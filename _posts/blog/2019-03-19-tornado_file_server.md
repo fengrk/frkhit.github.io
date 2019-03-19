@@ -9,7 +9,7 @@ description:
 
 # tornado文件上传服务
 
-代码例子:
+代码例子, 参考: [Python tornado上传文件](https://blog.csdn.net/dutsoft/article/details/53942983).
 
 ```
 import tornado.ioloop
