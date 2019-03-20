@@ -43,6 +43,18 @@ description:
 **Note:**
 - 各字段配合的优化, 参考[文档](https://docs.mongodb.com/manual/core/aggregation-pipeline-optimization/)
 
+聚合限制:
+- `Result Size Restrictions`: 单doc <= 16MB
+- `Memory Restrictions`: `Pipeline stages have a limit of 100 megabytes of RAM`; `The $graphLookup stage must stay within the 100 megabyte memory limit.`
+
+todo: [聚合操作zip code data set(经纬度)](https://docs.mongodb.com/manual/tutorial/aggregation-zip-code-data-set/)
+
+[Aggregation with User Preference Data](https://docs.mongodb.com/manual/tutorial/aggregation-with-user-preference-data/), 利用用户信息表举例:
+- 获取所有员工名称
+- 根据加入时间返回员工名称
+- 获取每个月新加入的人数
+- 获取前五个最受欢迎的爱好
+
 
 ## 2.聚合操作
 
