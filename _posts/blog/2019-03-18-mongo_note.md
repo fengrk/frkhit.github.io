@@ -55,6 +55,30 @@ todo: [聚合操作zip code data set(经纬度)](https://docs.mongodb.com/manual
 - 获取每个月新加入的人数
 - 获取前五个最受欢迎的爱好
 
+### 1.4 检索
+
+条件检索
+- `$or`: `cursor = db.inventory.find({"$or": [{"status": "A"}, {"qty": {"$lt": 30}}]})`
+- `$and`
+
+检索列表:
+- `Match an Array`: `db.inventory.find({"tags": ["red", "blank"]}) # tags == ["red", "blank"]`; `db.inventory.find({"tags": {"$all": ["red", "blank"]}}) # tags 同时存在"red","blank"两个元素`
+- `Query an Array with Compound Filter Conditions on the Array Elements`: `db.inventory.find({"dim_cm": {"$gt": 15, "$lt": 20}}) # 15<x<20; x>15, y<20`
+- `Query for an Array Element that Meets Multiple Criteria`: `db.inventory.find({"dim_cm": {"$elemMatch": {"$gt": 22, "$lt": 30}}}) # 其中有一个元素22<x<30`
+- `Query for an Element by the Array Index Position`: `db.inventory.find({"dim_cm.1": {"$gt": 25}})`
+- `Query an Array by Array Length`: `db.inventory.find({"tags": {"$size": 3}})`
+
+Project：
+- `db.inventory.find({"status": "A"}, {"item": 1, "status": 1})` means `SELECT _id, item, status from inventory WHERE status = "A"`
+- `db.inventory.find({"status": "A"}, {"item": 1, "status": 1, "_id": 0})` means `SELECT item, status from inventory WHERE status = "A"`
+- `db.inventory.find({"status": "A"}, {"status": 0, "instock": 0})` means `return All except for status and instock`
+
+
+其他
+- `db.inventory.find({"item": None})`: `None 或 不存在`
+- `db.inventory.find({"item": {"$type": 10}})`: 类型检查, 查询值为None的记录
+- `db.inventory.find({"item": {"$exists": False}})`: 不存在
+
 
 ## 2.聚合操作
 
