@@ -44,7 +44,33 @@ description:
 - 游标, 获取一致性结果. `cursor = db.foo.find();while (cursor.hasNext()) {...}`, 相同的结果可能返回多次, 原因是文档修改后空间不足可能被移动到后面. 解决方法是使用快照` db.foo.find().snapshot()`, 但占资源, 尽量不用.
 - 服务端游标的生命周期. 一般客户端会通知销毁游标; 服务端有超时记录, 超时后会自动销毁, 如果客户端需要长时间使用游标, 需要告知服务端不要超时销毁.
 
+## 5. 索引
+- `explain`查看具体执行操作, 调试索引的好工具. 如` db.users.find({username: "user101"}).explain()`
+- `db.currentOp()` 如果新建索引不能短时间内返回结果, 可以另开shell执行`db.currentOp()`查看
+- 索引的代价: 每次操作, 需要更新索引, 耗时更长. mongo限制索引上限为64; 每个集合最好不超过两个索引.
+- `hit()`: 强制 MongoDB 使用特定的索引
+- 稀疏索引: `sparse`. ` db.ensureIndex({"email" : 1}, {"unique" : true, "sparse" : true})`, email存在, 则唯一.
+
+## 6. 特殊的索引和集合
+- 固定集合: 固定大小, 循环队列.
+- TTL索引, 这种索引允许为每一个文档设置一个超时时间. 一个文档到达预设置的老化程度之后就会被删除. 这种类型的索引对于缓存问题（比如会话的保存）非常有用.` db.foo.ensureIndex({"lastUpdated" : 1}, {"expireAfterSecs" : 60*60*24}) # 24h`
+- 全文本索引, 用于全文检索, 耗资源.
+- 地理空间检索, 最常用的是 2dsphere 索引(用于地球表面类型的地图)和 2d索引(用于平面地图和时间连续的数据). 支持交集, 包含和接近查询.
+- GridFS存储文件.
+
+## 7. 聚合
+TODO: 待补充
 
 
+## 17. 了解应用的动态
+- ` db.currentOp()`: 查看正在进行的操作
+- `db.killOp()`: 终止操作. 注意, 只有交出了锁的进程才能被终止
+- system profiler: 可获得慢查询日志, 该操作默认不打开
+- `stats`: 获取集合, 数据库状态信息
+- `mongotop` 类似top, 获取当前操作信息. `mongotop-locks`, 获得每个数据库的锁状态
 
+# 18. 数据管理
+- 权限控制: 颗粒度
+- 建立索引: ` db.foo.ensureIndex({"somefield" : 1}, {"background" : true})`. 前台建索引, 锁定数据库; 后台建索引, 定期释放写锁
+- 压缩数据: 数据碎片; 使用` db.runCommand({"compact" : "collName"})`压缩数据
 
