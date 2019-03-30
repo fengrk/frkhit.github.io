@@ -2,7 +2,7 @@
 layout: post
 title: mtcnn读书笔记
 category: 技术
-tags: tensorflow,cnn
+tags: tensorflow, cnn
 keywords: 
 description: 
 ---

@@ -2,7 +2,7 @@
 layout: post
 title: ubuntu16.04中安装wine-qq
 category: 技术
-tags: ubuntu
+tags: ubuntu, wine
 keywords: 
 description: 
 ---

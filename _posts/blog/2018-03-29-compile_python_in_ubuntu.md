@@ -2,7 +2,7 @@
 layout: post
 title: Ubuntu16.04下源码安装python3.6
 category: 技术
-tags: python
+tags: python, ubuntu
 keywords: 
 description: 
 ---

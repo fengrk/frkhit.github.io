@@ -2,7 +2,7 @@
 layout: post
 title: py3.6环境下numpy C扩展出错
 category: 技术
-tags: python
+tags: python, numpy
 keywords: 
 description: 
 ---
