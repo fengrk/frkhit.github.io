@@ -18,6 +18,7 @@ description:
 使用线程池+`yield`实现异步:
 
 ``` 
+from concurrent.futures import ThreadPoolExecutor
 import tornado
 from tornado.concurrent import run_on_executor
 from tornado.web import RequestHandler

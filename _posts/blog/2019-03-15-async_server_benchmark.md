@@ -46,6 +46,7 @@ ab -n 100 -c 100 http://localhost:8000/
 ## 2. tornado测试
 ### 2.1 tornado服务端代码
 ```
+from concurrent.futures import ThreadPoolExecutor
 import tornado
 from tornado.concurrent import run_on_executor
 from tornado.web import RequestHandler
