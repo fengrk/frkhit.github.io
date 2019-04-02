@@ -65,12 +65,12 @@ docker tag <image_id> image_name:latest
 # 5. 使用外部文件
 ```
 # create Dockerfile
-echo "FROM python:3.6
+echo 'FROM python:3.6
 WORKDIR /app
 pip install tornado -i http://mirrors.aliyun.com/pypi/simple --trusted-host mirrors.aliyun.com
 ENTRYPOINT ["python"]
 CMD ["app.py"]
-" >> Dockerfile
+' >> Dockerfile
 
 # build container
 docker build -t diy/server:latest . 
