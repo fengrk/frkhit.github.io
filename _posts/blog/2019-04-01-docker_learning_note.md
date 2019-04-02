@@ -53,4 +53,12 @@ docker save 9610cfc68e8d > /home/myubuntu-save-1204.tar
 
 # 导入
 docker load < /home/myubuntu-save-1204.tar
+
+# 重命名
+docker images
+docker tag <image_id> image_name:latest
 ```
+
+# 4. 镜像重命名
+```docker tag <image_id> image_name:latest```
+
