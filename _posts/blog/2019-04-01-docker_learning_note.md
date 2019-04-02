@@ -62,3 +62,21 @@ docker tag <image_id> image_name:latest
 # 4. 镜像重命名
 ```docker tag <image_id> image_name:latest```
 
+# 5. 使用外部文件
+```
+# create Dockerfile
+echo "FROM python:3.6
+WORKDIR /app
+pip install tornado -i http://mirrors.aliyun.com/pypi/simple --trusted-host mirrors.aliyun.com
+ENTRYPOINT ["python"]
+CMD ["app.py"]
+" >> Dockerfile
+
+# build container
+docker build -t diy/server:latest . 
+
+# start container
+docker run -d -v /home/ubuntu/app:/app -p 5000:5000 diy/server
+
+```
+
