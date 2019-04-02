@@ -16,5 +16,5 @@ pip install jieba gensim numpy tornado -i http://mirrors.aliyun.com/pypi/simple 
 
 ## 2. 将指定包安装到lib目录下
 ```
-cat path_to_package >> xx/lib/python2.7/site-packages/pk1.pth
+echo path_to_package >> xx/lib/python2.7/site-packages/pk1.pth
 ```
