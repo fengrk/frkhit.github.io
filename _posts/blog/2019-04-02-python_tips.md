@@ -18,3 +18,18 @@ pip install jieba gensim numpy tornado -i http://mirrors.aliyun.com/pypi/simple 
 ```
 echo path_to_package >> xx/lib/python2.7/site-packages/pk1.pth
 ```
+
+## 3. cheat: 命令示例
+```
+python -m pip install cheat
+
+# tar命令使用示例
+cheat tar
+
+# To extract an uncompressed archive:
+tar -xvf /path/to/foo.tar
+
+# To create an uncompressed archive:
+tar -cvf /path/to/foo.tar /path/to/foo/
+....
+```
