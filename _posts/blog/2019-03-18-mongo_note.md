@@ -104,6 +104,14 @@ db.test.aggregate([
 ])
 ```
 
+### 2.2 获取某个字段的所有取值
+```
+db.getCollection('<collection>').aggregate(
+   [
+     { "$group" : { _id : null, "city": { "$addToSet": "$city" } } }
+   ]
+)
+```
 
 ## 3.update操作
 
@@ -155,4 +163,36 @@ self.db["test"].update_many(
     upsert=False,
 )
 # 执行后, _id = "5"的记录, tags中两个"a"均被删除
+```
+
+## 4. 工具
+
+### 4.1 导出 collection
+```
+mongoexport --uri "mongodb://<username>:<password>@<host1>:<port1>,<host2>:<port2>/<database>?replicaSet=mgset-123456&authSource=admin" --collection <collection> --fields <field1>,<field2> --out <outfile>
+```
+**要点:**
+- `uri`后加引号, `admin`放到`authSource`
+
+或者:
+```
+mongoexport -h <host> -d <databse> --collection <collection> --fields <field1>,<field2> --out <outfile>
+```
+
+### 4.2 导入 collection
+```
+mongoimport --uri "mongodb://<username>:<password>@<host1>:<port1>,<host2>:<port2>/<database>?replicaSet=mgset-123456&authSource=admin" --collection <collection> --fields <field1>,<field2> <datafile>
+```
+或者
+
+```
+mongoimport -h <host> -d <databse> --collection <collection> --fields <field1>,<field2> <datafile>
+```
+
+### 4.3 索引操作
+新建索引:
+
+```
+db.getCollection('<collection>').createIndex( { "age": 1}, {background: true, name:"_age_"} )
+
 ```
