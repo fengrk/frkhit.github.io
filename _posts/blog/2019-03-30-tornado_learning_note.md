@@ -13,6 +13,7 @@ description:
 - 获取请求消息体: `self.request.body`
 - 获取请求参数(query, form-data, ...): `self.get_argument("name", None) # 必须指定默认值, 不然找不到key时会触发异常`
 - 获取请求参数列表(query, form-data, ...): `self.get_arguments("name[]") # 找不到key, 返回空列表; 不能设置默认值`
+- 获取请求参数object: `self.get_argument("people[name]")`, `self.get_arguments("people[friend][]")`
 
 ## 2. 异步/并发
 使用线程池+`yield`实现异步:
