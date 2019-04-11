@@ -120,4 +120,13 @@ author: Wookie88
 (git branch -r | grep -v '\->' | while read remote; do git branch --track "${remote#origin/}" "$remote"; done) && git fetch --all && git pull --all
 ```
 
+# 10.删除所有本地分支
+参考:[GIT本地删除除master以外所有分支](https://blog.csdn.net/huuinn/article/details/78167873)
+
+```
+git checkout master && (git branch | grep -v "master" | xargs git branch -D)
+```
+**Note:**
+- 要求无修改
+- 本地分支仅保留 master
 
