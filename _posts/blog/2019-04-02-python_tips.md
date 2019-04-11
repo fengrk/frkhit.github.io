@@ -33,3 +33,11 @@ tar -xvf /path/to/foo.tar
 tar -cvf /path/to/foo.tar /path/to/foo/
 ....
 ```
+
+## 4. pip 工具
+
+逐行安装, 忽略错误:
+```
+cat requirements.txt | xargs -n 1 python -m pip install
+```
+
