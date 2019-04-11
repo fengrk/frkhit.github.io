@@ -10,8 +10,17 @@ description:
 # shell学习笔记
 
 ## 1. 一个命令的结果填充到另一个命令中
-```ssh foo@$(cat /data/ip.result)```
+ssh例子:
+```
+# 获取远程服务器的 ip, 并 ssh连接到该服务器上
+ssh foo@$(cat /data/ip.result)
+```
 
+docker例子:
+```
+# 删除所有仓库名为 redis 的镜像：
+docker image rm $(docker image ls -q redis)
+```
 ## 2. sudo执行echo命令
 ```
 sudo sh -c "echo '{
