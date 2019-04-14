@@ -41,3 +41,9 @@ tar -cvf /path/to/foo.tar /path/to/foo/
 cat requirements.txt | xargs -n 1 python -m pip install
 ```
 
+## 5. python 文件服务器
+```
+# python3 or python2
+python -m http.server || python -m SimpleHTTPServer
+```
+
