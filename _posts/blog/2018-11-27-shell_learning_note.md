@@ -48,3 +48,15 @@ scp ./local.file ubuntu@host:/remote/remote.file
 # 下载文件
 scp ubuntu@host:/remote/remote.file ./local.file
 ```
+
+## 6. 获取本机ip
+获取本机ip:
+
+```
+ ifconfig|sed -n '/inet addr/s/^[^:]*:\([0-9.]\{7,15\}\) .*/\1/p'
+```
+
+获取当前虚拟机ip:
+```
+ ifconfig|sed -n '/inet addr/s/^[^:]*:\([0-9.]\{7,15\}\) .*/\1/p' | grep 192.168
+```
