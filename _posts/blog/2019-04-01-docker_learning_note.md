@@ -80,3 +80,12 @@ docker run -d -v /home/ubuntu/app:/app -p 5000:5000 diy/server
 
 ```
 
+# 6. docker常用命令示例
+
+- 获取container日志: `docker logs <container_id>`
+- 实时获取container日志: `docker logs -f <container_id>`
+- 停止container: `docker stop <container_id>`
+- 删除镜像标签: `docker rmi -f <image_name>:<tag>`
+
+
+
