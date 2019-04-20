@@ -87,5 +87,10 @@ docker run -d -v /home/ubuntu/app:/app -p 5000:5000 diy/server
 - 停止container: `docker stop <container_id>`
 - 删除镜像标签: `docker rmi -f <image_name>:<tag>`
 
+# 7. Dockerfile常用命令示例
+- 复制多个文件: `COPY file_1 file_2 file_3 ./`
+- 添加作者信息: `MAINTAINER frkhit "frkhit@gmail.com"`
+
+
 
 
