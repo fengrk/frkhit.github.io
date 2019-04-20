@@ -130,3 +130,12 @@ git checkout master && (git branch | grep -v "master" | xargs git branch -D)
 - 要求无修改
 - 本地分支仅保留 master
 
+# 11.标签操作
+- 新建标签: `git tag <tag_name>`
+- 删除标签: `git tag -d <tag_name>`
+- 查看所有标签: `git tag --list`
+- 将标签推送到远程服务器: `git push --tags`
+- 删除远程标签: `git push origin --delete tag <tag-name>`
+
+
+
