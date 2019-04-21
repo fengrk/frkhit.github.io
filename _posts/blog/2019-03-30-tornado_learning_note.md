@@ -94,3 +94,14 @@ import requests
 response = requests.post(xxx)
 data = pickle.loads(response.content) # object
 ```
+
+## 5. 压缩数据
+```
+app = tornado.web.Application([
+    (r'/file', FileUploadHandler),
+],
+compress_response=True,
+)
+app.listen(8080)
+tornado.ioloop.IOLoop.instance().start()
+```
