@@ -117,18 +117,23 @@ vim .git/config
 ref: https://stackoverflow.com/questions/10312521/how-to-fetch-all-git-branches
 author: Wookie88
 
-(git branch -r | grep -v '\->' | while read remote; do git branch --track "${remote#origin/}" "$remote"; done) && git fetch --all && git pull --all
+(git --no-pager branch -r | grep -v '\->' | while read remote; do git --no-pager branch --track "${remote#origin/}" "$remote"; done) && git fetch --all && git pull --all
 ```
 
 # 10.删除所有本地分支
 参考:[GIT本地删除除master以外所有分支](https://blog.csdn.net/huuinn/article/details/78167873)
 
 ```
-git checkout master && (git branch | grep -v "master" | xargs git branch -D)
+git checkout master && (git --no-pager branch | grep -v "master" | xargs git branch -D)
 ```
 **Note:**
 - 要求无修改
 - 本地分支仅保留 master
+
+更新所有分支:
+```
+git checkout master && (git --no-pager branch | grep -v "master" | xargs git branch -D) && (git --no-pager branch -r | grep -v '\->' | while read remote; do git --no-pager branch --track "${remote#origin/}" "$remote"; done) && git fetch --all && git pull --all
+```
 
 # 11.标签操作
 - 新建标签: `git tag <tag_name>`
