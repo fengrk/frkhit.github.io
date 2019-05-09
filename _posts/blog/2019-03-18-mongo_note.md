@@ -196,3 +196,21 @@ mongoimport -h <host> -d <databse> --collection <collection> --fields <field1>,<
 db.getCollection('<collection>').createIndex( { "age": 1}, {background: true, name:"_age_"} )
 
 ```
+
+### 4.4 mongo 版本不兼容
+
+mongo 升级到 4.0 版本后，其工具如`mongodump`, `mongoimport`, `mongoexport`也需要升级到 4.0版本。
+
+为避免安装这些工具导致主机软件环境混乱，可以使用 docker 执行所需的工具。
+
+```
+# download images
+docker pull mongo:4.0
+
+# mkdir working dir
+mkdir -p dodo && chmod 777 dodo/ -R && cd dodo/
+
+# run mongo tools
+docker run --rm -v $(pwd):/workdir/ -w /workdir/ mongo:4.0 mongoimport --uri "mongodb://<username>:<password>@<host1>:<port1>,<host2>:<port2>/<database>?replicaSet=mgset-123456&authSource=admin" --collection <collection> --fields <field1>,<field2> <datafile>
+```
+
