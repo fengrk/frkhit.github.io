@@ -60,3 +60,9 @@ scp ubuntu@host:/remote/remote.file ./local.file
 ```
  ifconfig|sed -n '/inet addr/s/^[^:]*:\([0-9.]\{7,15\}\) .*/\1/p' | grep 192.168
 ```
+
+## 7. 设置屏幕亮度为0
+```
+[[ "$(cat /sys/class/backlight/intel_backlight/brightness)" -ne "0" ]] && (echo 0 | sudo tee /sys/class/backlight/intel_backlight/brightness)
+```
+
