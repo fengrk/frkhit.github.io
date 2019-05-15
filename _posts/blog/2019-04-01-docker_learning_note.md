@@ -91,6 +91,20 @@ docker run -d -v /home/ubuntu/app:/app -p 5000:5000 diy/server
 - 复制多个文件: `COPY file_1 file_2 file_3 ./`
 - 添加作者信息: `MAINTAINER frkhit "frkhit@gmail.com"`
 
+# 8. 端口绑定
 
+```
+# 端口绑定
+docker run -d -p 8080:80 ...
+
+# ip + 端口 绑定
+docker run -d -p 127.0.0.1:9999:80 ...
+
+# ip + 所有端口 绑定
+docker run -d -p 127.0.0.1::80 ...
+
+# 查看容器端口绑定
+docker port <container_id>
+```
 
 
