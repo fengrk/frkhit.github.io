@@ -16,7 +16,7 @@ supervisorctl reread && supervisorctl update
 ```
 ## 2. 任务配置示例
 
-- 多个子进程使用按顺序使用不同的端口
+- 多个子进程按顺序使用不同的端口
 ```
 [program:demo]
 command=docker run --name=demo_%(process_num)05d -p %(process_num)05d:80 diy/server:latest
