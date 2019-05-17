@@ -107,4 +107,21 @@ docker run -d -p 127.0.0.1::80 ...
 docker port <container_id>
 ```
 
+# 9. docker充当命令行工具
+
+- `docker compose`命令行工具
+详见 `https://github.com/docker/compose/releases` 中的 `run.sh`工具。
+
+
+- 运行 4.0版本的 mongoimport命令
+```
+mkdir -p dodo && chmod 777 dodo/ -R && cd dodo/
+
+docker pull mongo:4.0
+
+docker run --rm -v $(pwd):/workdir/ -w /workdir/ mongo:4.0 mongoexport --uri "<url>" --collection my_collection --out ./my_collection.bak
+```
+
+
+
 
