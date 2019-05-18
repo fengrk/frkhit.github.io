@@ -35,3 +35,11 @@ stopsignal=TERM
 
 上述配置，会依次启动 demo_8001, demo_8002, ..., demo_8005 共 5 个 容器， 分别监听 8001, 8002, ..., 8005端口。
 
+## 3. 监控supervisor自身
+
+使用一下代码，定时监控supervisor：没运行则启动，运行则维持原状。
+
+```
+# crontab -e
+*/5 * * * * supervisord -c /etc/supervisord.conf
+```
