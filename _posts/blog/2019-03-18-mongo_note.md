@@ -168,6 +168,7 @@ self.db["test"].update_many(
 
 ### 3.3 列表修改高级版 
 假设有数据如下
+
 ```
 collection.insert_many([
 {"name": "a1", "tags": [{"weight": 10}, {"weight": 20}]},
@@ -177,6 +178,7 @@ collection.insert_many([
 ```
 
 - 将`weight=10`的标签的权重更改为20
+
 ```
 # 执行一次，只会更新该条记录中满足条件的第一个元素
 
@@ -200,6 +202,7 @@ while True:
 ```
 
 - 将`weight!=10`的标签的权重更改为10
+
 ```
 # 执行一次，只会更新该条记录中满足条件的第一个元素
 
@@ -211,6 +214,7 @@ upsert=False,
 ```
 
 - 将`weight!=10 or weight!=20`的标签的权重更改为10
+
 ```
 # 执行一次，只会更新该条记录中满足条件的第一个元素
 
@@ -224,6 +228,7 @@ upsert=False,
 ## 4. 工具
 
 ### 4.1 导出 collection
+
 ```
 mongoexport --uri "mongodb://<username>:<password>@<host1>:<port1>,<host2>:<port2>/<database>?replicaSet=mgset-123456&authSource=admin" --collection <collection> --fields <field1>,<field2> --out <outfile>
 ```
@@ -231,11 +236,13 @@ mongoexport --uri "mongodb://<username>:<password>@<host1>:<port1>,<host2>:<port
 - `uri`后加引号, `admin`放到`authSource`
 
 或者:
+
 ```
 mongoexport -h <host> -d <databse> --collection <collection> --fields <field1>,<field2> --out <outfile>
 ```
 
 ### 4.2 导入 collection
+
 ```
 mongoimport --uri "mongodb://<username>:<password>@<host1>:<port1>,<host2>:<port2>/<database>?replicaSet=mgset-123456&authSource=admin" --collection <collection> --fields <field1>,<field2> <datafile>
 ```
