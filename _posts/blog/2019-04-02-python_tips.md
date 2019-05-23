@@ -47,3 +47,42 @@ cat requirements.txt | xargs -n 1 python -m pip install
 python -m http.server || python -m SimpleHTTPServer
 ```
 
+## 6. logger无法输出
+
+基本描述：`python`中获取 `logger` 变量，`level`为 `logging.INFO`, 然而使用 `logger.info("xxx")` 无法输出日志。
+
+debug 过程: 发现`logger.handlers`不为空，但是`logger.disabled为True`, 导致没有执行日志输出。检查后，发现初始化时，`logger.disabled`为 `False`；排除其他代码修改`logger.disabled`值。
+
+问题修复：
+
+参考[
+Why do all my loggers start auto-disabled?](https://bytes.com/topic/python/answers/832745-why-do-all-my-loggers-start-auto-disabled). Vinay Sajip 提到原因: 初始化`logger`后，代码调用`fileConfig`会修改 `logger.disabled`。
+
+```
+Calling fileConfig() disables any loggers existing at the time of the
+call. Make sure you call fileConfig() before instantiating any
+loggers; after that you can instantiate as many as you like, and they
+will all be enabled. Make sure you don't call fileConfig() again, as
+in that call all loggers which are not named in the configuration will
+be disabled.
+
+The reason why fileConfig() disables existing loggers is that it was
+designed as a one-off configuration (which completely replaces any
+existing configuration with that specified in the config file) - not
+as an incremental configurator.
+
+Best regards,
+
+Vinay Sajip
+```
+因此，解决方法是，先调用`fileConfig`再初始化自己的`logger`。
+
+
+
+
+
+
+
+
+
+
