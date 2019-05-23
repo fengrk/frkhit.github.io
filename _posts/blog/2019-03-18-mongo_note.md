@@ -165,6 +165,62 @@ self.db["test"].update_many(
 # 执行后, _id = "5"的记录, tags中两个"a"均被删除
 ```
 
+
+### 3.3 列表修改高级版 
+假设有数据如下
+```
+collection.insert_many([
+{"name": "a1", "tags": [{"weight": 10}, {"weight": 20}]},
+{"name": "a2", "tags": [{"weight": 11}, {"weight": 21}]},
+{"name": "a3", "tags": [{"weight": 10}, {"weight": 25}]},
+])
+```
+
+- 将`weight=10`的标签的权重更改为20
+```
+# 执行一次，只会更新该条记录中满足条件的第一个元素
+
+collection.update_many(
+{"tags.weight": 10},
+{"$set": {"tags.$.weight": 20}},
+upsert=False,
+)
+```
+
+修改所有匹配值的方法:
+
+```
+while True:
+    result = collection.update_many(
+                {"tags.weight": 10},
+                {"$set": {"tags.$.weight": 20}},
+                upsert=False,)
+    if result.matched_count == 0:
+        break
+```
+
+- 将`weight!=10`的标签的权重更改为10
+```
+# 执行一次，只会更新该条记录中满足条件的第一个元素
+
+collection.update_many(
+{"tags": {"$elemMatch": {"weight": {"$ne": 10}}},
+{"$set": {"tags.$.weight": 20}},
+upsert=False,
+)
+```
+
+- 将`weight!=10 or weight!=20`的标签的权重更改为10
+```
+# 执行一次，只会更新该条记录中满足条件的第一个元素
+
+collection.update_many(
+{"tags": {"$elemMatch": {"$or": [{"weight": {"$ne": 10}, {"weight": {"$ne": 20}]}}},
+{"$set": {"tags.$.weight": 20}},
+upsert=False,
+)
+```
+
 ## 4. 工具
 
 ### 4.1 导出 collection
