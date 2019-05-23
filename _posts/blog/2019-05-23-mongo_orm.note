@@ -1,0 +1,30 @@
+---
+layout: post
+title: mongo ORM 笔记
+category: 技术
+tags: mongo, orm
+keywords: 
+description: 
+---
+
+# mongo ORM 笔记
+
+## 1. group用法
+
+### 1.1 简单统计
+
+统计消费者的消费订单号：
+
+```
+res_list = OrderModel.objects().aggregate(
+    {'$match': {
+        OrderModel.buyer_id.name: {"$in": list(set(buyer_id_list))}
+    }},
+    {"$group": {
+        "_id": "${}".format(OrderModel.buyer_id.name),
+        "order_id": {"$addToSet": "${}".format(OrderModel.order_id.name)}
+    }}
+)
+buyer_vs_order_dict = {res["_id"]: res["order_id"] for res in res_list}
+
+```
