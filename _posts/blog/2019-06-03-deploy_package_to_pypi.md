@@ -45,11 +45,16 @@ deploy:
   skip_cleanup: true
   skip_existing: true
   twine_version: 1.13.0
+  distributions: "sdist bdist_wheel"
   on:
     tags: true
     python: 3.6
     branch: master
 ```
+注意:
+- `distributions: "sdist bdist_wheel"` 的目的是同时生成 whl 文件
+- `tags: true`表示新建标签时触发代码发布
+
 
 加密 pypi 密码: 
 
