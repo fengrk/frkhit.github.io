@@ -37,6 +37,7 @@ sudo apt update && sudo apt -y dist-upgrade
 
 ### 2.1 shadowsocks出现`EVP_CIPHER_CTX_cleanup`错误
 报错:
+
 ```
 AttributeError: /usr/lib/x86_64-linux-gnu/libcrypto.so.1.1: undefined symbol: EVP_CIPHER_CTX_cleanup
 ```
@@ -54,6 +55,7 @@ vim /usr/local/lib/python3.6/dist-packages/shadowsocks/crypto/openssl.py
 再搜索cleanup（全文件共2处，此处位于111行），将libcrypto.EVP_CIPHER_CTX_cleanup(self._ctx)改为libcrypto.EVP_CIPHER_CTX_reset(self._ctx)；
 重新启动ss即可。
 ```
+
 ### 2.2 wifi定时重启
 
 ```
@@ -81,6 +83,7 @@ sudo crontab -e
 [参考](https://askubuntu.com/questions/773595/how-can-i-disable-touchpad-while-typing-on-ubuntu-16-04-syndaemon-isnt-working):
 
 *方案一:*
+
 ```
 sudo add-apt-repository ppa:atareao/atareao
 sudo apt update

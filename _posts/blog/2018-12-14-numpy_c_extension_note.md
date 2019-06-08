@@ -10,6 +10,7 @@ description:
 # py3.6环境下numpy C扩展出错
 
 # 1.问题
+
 `python3.6+linux+numpy(1.15.4)`编译[science_rcn](https://github.com/vicariousinc/science_rcn), 报错:
 ```
 /home/frkhit/awsmlenv/lib/python3.6/site-packages/numpy/core/include/numpy/__multiarray_api.h:1542:35: error: return-statement with a value, in function re
@@ -33,6 +34,7 @@ Y_IMPORT_ARRAY_RETVAL; } }
 参考[pandas](https://github.com/pandas-dev/pandas/issues/3872), [numpy: Writing your own ufunc](https://github.com/numpy/numpy/blob/9245def62e4747324be811f2d4f621a04213c131/doc/source/user/c-info.ufunc-tutorial.rst).
 
 将源代码中的
+
 ```
 /* ==== Initialize the C_test functions ====================== */
 extern "C" {

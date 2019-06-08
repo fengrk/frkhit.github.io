@@ -11,6 +11,7 @@ description:
 
 # 1. `~`下新建`backup_history.py`文件
 代码为
+
 ```
 # -*- coding:utf-8 -*-
 
@@ -95,6 +96,7 @@ if __name__ == '__main__':
 ```
 # 2. 设置定时任务
 通过`crontab -e`添加任务：
+
 ```
 */15 * * * * python ~/backup_history.py
 ```

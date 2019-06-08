@@ -10,6 +10,7 @@ description:
 # git使用笔记
 
 # 1.old mode 100755 new mode 100644
+
 ```
 git config core.filemode false
 ```
@@ -34,6 +35,7 @@ git 中有三个参数于换行符有关：
 - `false` 则允许提交时有不同换行符存在
 
 编辑 `/.git/config` 文件
+
 ```
 [core]
     fileMode = false
@@ -50,6 +52,7 @@ core.fileMode=false
 ```
 
 fore change crlf if found error before `git commit`
+
 ```
  python -c "from pytools import git_crlf_helper as g;g()" -d . -t lf -i *.py -e *.pyc
 ```
@@ -68,16 +71,19 @@ git push origin master --force --all
 
 # 4.子模块
 - 添加子模块
+
 ```
 git submodule add https://github.com/tensorflow/tensorflow sub/tensorflow
 ```
 - 更新所有子模块
+
 ```
 git submodule foreach git pull
 ```
 
 # 5.merge commits
 - merge all commits into one on a branch
+
 ```
 git merge --squash feature-branch && git commit -m "all commits"
 ```
@@ -88,11 +94,13 @@ git merge --squash feature-branch && git commit -m "all commits"
 
 # 7.proxy
 - set proxy
+
 ```
 git config --global https.proxy socks5://127.0.0.1:1080
 git config --global http.proxy socks5://127.0.0.1:1080
 ```
 - clear proxy
+
 ```
 git config --global --unset http.proxy
 git config --global --unset https.proxy
@@ -103,16 +111,19 @@ git config --global --unset https.proxy
 实现不同项目使用不同用户, 关键是设置gitconfig文件
 
 全局配置:
+
 ```
 vim ~/.gitconfig
 ```
 
 项目配置
+
 ```
 vim .git/config
 ```
 
 # 9.拉取所有分支
+
 ```
 ref: https://stackoverflow.com/questions/10312521/how-to-fetch-all-git-branches
 author: Wookie88
@@ -131,6 +142,7 @@ git checkout master && (git --no-pager branch | grep -v "\<master\>" | xargs git
 - 本地分支仅保留 master
 
 更新所有分支:
+
 ```
 git checkout master && (git --no-pager branch | grep -v "\<master\>" | xargs git branch -D) && (git --no-pager branch -r | grep -v "\->" | while read remote; do git --no-pager branch --track "${remote#origin/}" "$remote"; done) && git fetch --all && git pull --all
 ```
