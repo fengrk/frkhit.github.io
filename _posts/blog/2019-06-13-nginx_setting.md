@@ -130,15 +130,32 @@ server {
 rewrite ^/blog/(.*)$  https://blog.b.com/$1 permanent;
 ```
 
+- 修改网址并使用新网址进行其他操作
+
+```
+# 反向代理的例子
+location /blog/ {
+    rewrite ^/blog/(.*)$ /$1 break; # 去除blog
+    proxy_pass http://127.0.0.1:6000; 
+} 
+```
+
 ## 3. 反向代理
 
 ``` 
 server {
 
-    listen 80;
-
+    listen 443 ssl http2;
     server_name www.b.com;
-
+    
+    ssl on;
+    ssl_certificate  /etc/nginx/cert/b.com.pem;
+    ssl_certificate_key /etc/nginx/cert/b.com.key;
+    ssl_session_timeout 5m;
+    ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+    ssl_prefer_server_ciphers on;
+    
     client_max_body_size 20M;
 
     location /static/ {
