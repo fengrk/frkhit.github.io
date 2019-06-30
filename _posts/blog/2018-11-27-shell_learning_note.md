@@ -113,3 +113,10 @@ RUN apt-get update -qqy \
   && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
 ```
 
+## 9. 环境变量动态设置
+
+示例
+
+```
+LDFLAGS=-L/usr/local/opt/openssl/lib https_proxy="" http_proxy="" pip install mysqlclient
+```

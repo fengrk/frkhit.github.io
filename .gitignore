@@ -102,6 +102,7 @@ ENV/
 
 # pycharm
 .idea/
+.vscode/
 
 # cache
 cache.dat
@@ -109,3 +110,6 @@ cache.dat
 _site/
 _drafts/
 .DS_Store
+
+*.code-workspace
+
