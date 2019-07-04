@@ -25,8 +25,8 @@ ga:
  url: blog.arkfeng.xyz
 
 # disqus 设置
-#disqus:
-#  shortname: painterlin
+disqus:
+ shortname: blog-arkfeng-xyz
 
 # 主题设置，自动激活某个标签
 active: 技术
