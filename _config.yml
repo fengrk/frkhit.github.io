@@ -6,13 +6,13 @@ markdown: redcarpet
 author: 
   name: frkhit
   email: frkhit@gmail.com
-  link: http://frkhit.github.io
-  github: http://github.com/frkhit
+  link: https://blog.arkfeng.xyz
+  github: https://github.com/frkhit
 
 # 站点信息
 title: 日志
 description: blog for frkhit
-url: https://frkhit.github.io
+url: https://blog.arkfeng.xyz
 rss_url: /pages/atom.xml
 
 # gavatar头像及Favicon
@@ -20,9 +20,9 @@ rss_url: /pages/atom.xml
 #favicon: /public/img/deer3.png
 
 # google analytics 设置
-#ga:
-#  id: UA-54262064-1
-#  url: painterlin.com
+ga:
+ id: UA-143320942-1
+ url: blog.arkfeng.xyz
 
 # disqus 设置
 #disqus:
