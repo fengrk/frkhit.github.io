@@ -16,8 +16,8 @@ url: https://blog.arkfeng.xyz
 rss_url: /pages/atom.xml
 
 # gavatar头像及Favicon
-#gavatar: /public/img/deer3.png
-#favicon: /public/img/deer3.png
+gavatar: /public/img/avatar.png
+favicon: /public/img/avatar.png
 
 # google analytics 设置
 ga:
@@ -25,8 +25,8 @@ ga:
  url: blog.arkfeng.xyz
 
 # disqus 设置
-disqus:
- shortname: blog-arkfeng-xyz
+#disqus:
+# shortname: blog-arkfeng-xyz
 
 # 主题设置，自动激活某个标签
 active: 技术
