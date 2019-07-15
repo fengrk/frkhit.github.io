@@ -120,3 +120,9 @@ RUN apt-get update -qqy \
 ```
 LDFLAGS=-L/usr/local/opt/openssl/lib https_proxy="" http_proxy="" pip install mysqlclient
 ```
+
+## 10. 安装 BBR
+
+```
+wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh && sudo chmod +x bbr.sh && sudo ./bbr.sh
+```
