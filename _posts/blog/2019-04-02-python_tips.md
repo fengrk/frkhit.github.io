@@ -11,7 +11,7 @@ description:
 
 ## 1. 使用指定 pypi源安装包
 ```
-pip install jieba gensim numpy tornado -i http://mirrors.aliyun.com/pypi/simple --trusted-host mirrors.aliyun.com
+pip install jieba gensim numpy tornado *.whl -i http://mirrors.aliyun.com/pypi/simple --trusted-host mirrors.aliyun.com
 ```
 
 ## 2. 将指定包安装到lib目录下
@@ -76,6 +76,21 @@ Best regards,
 Vinay Sajip
 ```
 因此，解决方法是，先调用`fileConfig`再初始化自己的`logger`。
+
+## 7. 库打包
+
+打包成 whl 文件格式
+
+```
+python setup.py bdist_wheel
+```
+
+安装所有 whl 库
+
+```
+python -m pip install requests *.whl
+```
+
 
 
 
