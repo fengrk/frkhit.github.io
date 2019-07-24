@@ -91,13 +91,19 @@ python setup.py bdist_wheel
 python -m pip install requests *.whl
 ```
 
+## 8. 输出缓存问题
 
+场景 1: 
 
+使用`nohup python pytorch_demo.py > all.log 2>&1 &` 无法在 all.log 文件中获取到日志, 
 
+但单独执行`python pytorch_demo.py ` 能看到输出结果.
 
+解决方案是使用 `-u`不缓存输出, 
 
+`nohup python -u pytorch_demo.py > all.log 2>&1 &`
 
+场景 2:
+docker 中 直接运行 python 服务, 通过 `docker log -f <container>` 看不到日志,
 
-
-
-
+解决方法是, 启动 python 服务时, 增加 `-u` 参数.
