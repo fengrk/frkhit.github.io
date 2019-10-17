@@ -231,3 +231,41 @@ server {
 - 通过`$cookie_svr`可以获取到`svr`的值
 - 要正确使用`rewrite`的停止标志(`last`, `break`, `permanent`)
 
+
+## 5. 负载均衡
+
+通过 `nginx` 的 `stream` 实现负载均衡
+
+```
+
+user root;
+worker_processes  auto;
+
+events {
+    worker_connections  1024;
+}
+
+
+stream {
+	log_format lbs '$remote_addr -> $upstream_addr [$time_local] '
+                 '$protocol $status $bytes_sent $bytes_received '
+                 '$session_time  "$upstream_connect_time"';
+
+    access_log /var/log/nginx/access.log  lbs ;
+    open_log_file_cache off;
+
+	upstream backend {
+        hash $remote_addr consistent;
+        server backend-1:18888;
+        server backend-2:18888;
+        server backend-3:18888;
+        server backend-4:18888;
+	}
+
+    server {
+        listen 18888;
+        listen 18888 udp;
+
+		proxy_pass backend;
+    }
+```
