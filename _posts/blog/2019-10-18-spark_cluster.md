@@ -27,7 +27,7 @@ github 项目[mvillarrealb/docker-spark-cluster](https://github.com/mvillarrealb
 
 - 克隆项目: `git clone git@github.com:frkhit/docker-spark-cluster.git`
 - 进入项目目录，使用前, 请设置 docker 加速器， 具体可以参考[Docker Hub 镜像加速器](https://juejin.im/post/5cd2cf01f265da0374189441)
-- 启动集群: `docker-compose down && docker-compose up -d`
+- 启动集群: `docker-compose down && docker-compose up -d`, 如果 docker-compose 没安装，可参考[docker-compose 安装方法](https://blog.arkfeng.xyz/2019/10/14/docker_compose_install.html)
 
 访问 `http://localhost:8080/` 即可访问 spark 集群。 更详细的教程可以参考 `README.md` 文件。
 
