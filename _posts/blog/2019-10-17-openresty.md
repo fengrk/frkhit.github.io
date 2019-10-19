@@ -144,3 +144,25 @@ http {
 }
 
 ```
+
+## 2. 使用 lua 在请求 header 上写入请求到达时的时间戳
+
+
+```
+http {
+
+    server {
+            listen 80;
+
+            location / {
+                    rewrite_by_lua '
+                        ngx.req.set_header("RTIME", ngx.req.start_time()*1000)
+                    ';
+
+                    proxy_set_header X-Real-IP $remote_addr;
+                    proxy_pass http://127.0.0.1:8888;
+            }
+    }
+}
+
+```
