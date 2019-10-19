@@ -154,5 +154,25 @@ git checkout master && (git --no-pager branch | grep -v "\<master\>" | xargs git
 - 将标签推送到远程服务器: `git push --tags`
 - 删除远程标签: `git push origin --delete tag <tag-name>`
 
+## 12. ssh 代理
 
+当使用类似 `git clone git@github.com:frkhit/frkhit.github.io.git` 的方式连接 git 服务器时，`~/.gitconfig` 中设置的代理便不能使用。
 
+正确的方法是， 在 `~/.ssh/config` 增加配置：
+
+```
+Host github.com
+   HostName github.com
+   User git
+   # http proxy
+   # ProxyCommand socat - PROXY:127.0.0.1:%h:%p,proxyport=9999
+   # socks5
+   ProxyCommand nc -v -x 127.0.0.1:1080 %h %p
+```
+
+执行 `git` 命令访问 `github.com`, 会有类似这样的提示：
+
+```
+Connection to github.com port 22 [tcp/ssh] succeeded!
+
+```
