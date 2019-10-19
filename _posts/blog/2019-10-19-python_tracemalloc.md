@@ -13,7 +13,7 @@ description:
 
 尝试使用内存分析工具，分析代码中那部分占用的内存过多。
 
-在 python3.5环境下， python自带的工具`tracemalloc`，可以分析内存的使用情况。
+在 python3环境下， python自带的工具`tracemalloc`，可以分析内存的使用情况。
 
 ## 实例
 
@@ -63,7 +63,7 @@ if __name__ == '__main__':
 
 
 
-启动服务后， 通过查看控制台输出结果， 或访问 `http://localhost:8080/bad`得到的结果
+启动服务后， 结果可以通过查看控制台或访问 `http://localhost:8080/bad`得到。
 
 输出结果如下：
 
@@ -340,7 +340,7 @@ File "/opt/streamit_demo/lib/python3.6/site-packages/tornado/web.py", line 65
 import email.utils
 ```
 
-通过输出可以找到内存占用最大的代码段是
+通过输出结果可以找到内存占用最大的代码段为：
 
 ```
 class BadHandler(tornado.web.RequestHandler):
