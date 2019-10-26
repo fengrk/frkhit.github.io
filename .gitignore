@@ -107,8 +107,11 @@ ENV/
 # cache
 cache.dat
 
-_site/
 _drafts/
 .DS_Store
 
 *.code-workspace
+
+# jekyll
+.jekyll-cache/
+_site/
