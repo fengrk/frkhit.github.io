@@ -44,5 +44,5 @@ locals:
   archive: 归档
 
 # 插件
-plugins:
-  - hook-add-last-modified-date
+#plugins:
+#  - hook-add-last-modified-date
