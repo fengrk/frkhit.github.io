@@ -126,3 +126,25 @@ LDFLAGS=-L/usr/local/opt/openssl/lib https_proxy="" http_proxy="" pip install my
 ```
 wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh && sudo chmod +x bbr.sh && sudo ./bbr.sh
 ```
+
+## 11. tar 分卷压缩及解压
+
+```
+dd if=/dev/zero of=test.log bs=1M count=1000
+
+# 压缩
+tar zcf - test.log |split -b 100m - test.tar.gz.
+
+# 解压
+mkdir -p test_tmp
+mv test.tar.gz.* test_tmp/
+cd test_tmp/
+cat logs.test.tar.gz.* | tar zx
+
+```
+
+## debian系 系统安装 tzdata 免输入时区
+
+```
+DEBIAN_FRONTEND=noninteractive apt-get install -y tzdata
+```
