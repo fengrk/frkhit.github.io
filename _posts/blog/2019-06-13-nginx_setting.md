@@ -269,3 +269,17 @@ stream {
 		proxy_pass backend;
     }
 ```
+
+
+## 6. try_files
+
+```
+server {
+    ...
+
+    location ^~ /static/html/ {
+        alias /opt/code/pages/html/;
+        try_files $uri /static/html/index.html;
+   }
+}
+```
