@@ -283,3 +283,17 @@ server {
    }
 }
 ```
+
+## 7. `location + if`
+
+``` 
+server {
+    location ^~ /static/html/ {
+        if ($url ~* \.(png|jpg)$ ){
+            rewrite ^/(.*)$ https://my-bucket.oss-cn-shenzhen.aliyuncs.com/$1 permanent;
+        }
+        alias /opt/code/pages/html/;
+        try_files $uri /static/html/index.html;
+    }
+}
+```
