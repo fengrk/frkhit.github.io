@@ -161,3 +161,14 @@ cp -r ~/code/my_libs /opt/python_libs/
 [ -d "/opt/code/new_libs" ]  && cp -r /opt/code/new_libs /opt/python_libs/
 
 ```
+
+## 14. 文件下载
+
+```
+# curl
+curl -o out.file -sfL http:xxx.com
+
+# wget
+wget -qO out.file http:xxx.com
+
+```
