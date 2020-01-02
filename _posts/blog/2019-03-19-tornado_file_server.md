@@ -9,6 +9,8 @@ description:
 
 # tornado文件上传服务
 
+## 1. tornado 文件上传服务器示例
+
 代码例子, 参考: [Python tornado上传文件](https://blog.csdn.net/dutsoft/article/details/53942983).
 
 ```
@@ -69,5 +71,25 @@ app = tornado.web.Application([
 if __name__ == '__main__':
     app.listen(8080)
     tornado.ioloop.IOLoop.instance().start()
+
+```
+
+
+## 2. requests 调用接口上传文件
+
+```
+import requests
+
+
+# upload file
+upload_file = "upload.pdf"
+with open(upload_file, "rb") as f:
+    content = f.read()
+
+# request
+resp = requests.post(
+            url="http://127.0.0.1:8080/file",
+            files={"file": (os.path.basename(upload_file), content)},
+        )
 
 ```
