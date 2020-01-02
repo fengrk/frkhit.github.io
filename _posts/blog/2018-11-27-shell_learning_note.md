@@ -143,8 +143,21 @@ cat logs.test.tar.gz.* | tar zx
 
 ```
 
-## debian系 系统安装 tzdata 免输入时区
+## 12. debian系 系统安装 tzdata 免输入时区
 
 ```
 DEBIAN_FRONTEND=noninteractive apt-get install -y tzdata
+```
+
+## 13. 复杂条件的文件复制操作
+
+```
+mkdir -p /opt/python_libs 
+
+# copy folder
+cp -r ~/code/my_libs /opt/python_libs/
+
+# copy folder if exists
+[ -d "/opt/code/new_libs" ]  && cp -r /opt/code/new_libs /opt/python_libs/
+
 ```
