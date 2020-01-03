@@ -125,6 +125,14 @@ docker pull mongo:4.0
 docker run --rm -v $(pwd):/workdir/ -w /workdir/ mongo:4.0 mongoexport --uri "<url>" --collection my_collection --out ./my_collection.bak
 ```
 
+# 10. 宿主与容器传数据
 
+```
+# cp
+docker cp container:/app/data ./
+docker cp ./data container:/app/
 
+# 管道
+cat input.txt | docker exec -i tor-1 /bin/bash -c 'cat > /app/data.txt'
 
+```
