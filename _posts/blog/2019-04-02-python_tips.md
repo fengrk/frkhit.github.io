@@ -105,6 +105,21 @@ python -m pip install requests *.whl
 `nohup python -u pytorch_demo.py > all.log 2>&1 &`
 
 场景 2:
+
 docker 中 直接运行 python 服务, 通过 `docker log -f <container>` 看不到日志,
 
 解决方法是, 启动 python 服务时, 增加 `-u` 参数.
+
+
+进阶:
+
+可以使用 `PYTHONUNBUFFERED=1`  实现上面的功能. 
+
+Dockerfile  中可以使用 `ENV PYTHONUNBUFFERED 1`.
+
+## 9. 命令行直接执行 python 代码
+
+```
+python -c 'import foo; print foo.hello()'
+```
+
