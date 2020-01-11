@@ -100,3 +100,27 @@ class SqliteTextDao(object):
         return result_list
 
 ```
+
+## 2. sqlite sql 用例参考
+
+### 2.1 list instance
+
+```
+# uid in uid_list
+"SELECT UID from DB1 where UID IN ({})".format(",".join(["?" for _ in range(len(uid_list))]))
+
+# uid in uid_list && has_detail
+"SELECT UID from DB1 where UID IN ({}) AND DETAIL != '' ".format(",".join(["?" for _ in range(len(uid_list))]))
+
+# uid in uid_list && !has_detail
+"SELECT UID from DB1 where UID IN ({}) AND DETAIL = '' ".format(",".join(["?" for _ in range(len(uid_list))]))
+
+```
+
+### 2.2 insert only uid not exists
+
+```
+# UID 是 CHAR(32) UNIQUE NOT NULL
+'INSERT OR IGNORE INTO DB1 (ID, UID, VALUE) values (NULL, ?, ? ) '
+
+```
