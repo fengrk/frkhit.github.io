@@ -59,10 +59,10 @@ docker images
 docker tag <image_id> image_name:latest
 ```
 
-# 4. 镜像重命名
+## 4. 镜像重命名
 ```docker tag <image_id> image_name:latest```
 
-# 5. 使用外部文件
+## 5. 使用外部文件
 ```
 # create Dockerfile
 echo 'FROM python:3.6
@@ -80,7 +80,7 @@ docker run -d -v /home/ubuntu/app:/app -p 5000:5000 diy/server
 
 ```
 
-# 6. docker常用命令示例
+## 6. docker常用命令示例
 
 - 获取container日志: `docker logs <container_id>`
 - 实时获取container日志: `docker logs -f <container_id>`
@@ -90,11 +90,11 @@ docker run -d -v /home/ubuntu/app:/app -p 5000:5000 diy/server
 - 使用宿主时区：`docker run -d  -v /etc/localtime:/etc/localtime:ro ...`
 - 执行多条命令: `docker run -d -w /app frkhit/docker-python:3.6-chrome sh -c "python jd_main.py; python main.py"`
 
-# 7. Dockerfile常用命令示例
+## 7. Dockerfile常用命令示例
 - 复制多个文件: `COPY file_1 file_2 file_3 ./`
 - 添加作者信息: `MAINTAINER frkhit "frkhit@gmail.com"`
 
-# 8. 端口绑定
+## 8. 端口绑定
 
 ```
 # 端口绑定
@@ -110,7 +110,7 @@ docker run -d -p 127.0.0.1::80 ...
 docker port <container_id>
 ```
 
-# 9. docker充当命令行工具
+## 9. docker充当命令行工具
 
 - `docker compose`命令行工具
 详见 `https://github.com/docker/compose/releases` 中的 `run.sh`工具。
@@ -125,7 +125,7 @@ docker pull mongo:4.0
 docker run --rm -v $(pwd):/workdir/ -w /workdir/ mongo:4.0 mongoexport --uri "<url>" --collection my_collection --out ./my_collection.bak
 ```
 
-# 10. 宿主与容器传数据
+## 10. 宿主与容器传数据
 
 ```
 # cp
@@ -136,3 +136,9 @@ docker cp ./data container:/app/
 cat input.txt | docker exec -i tor-1 /bin/bash -c 'cat > /app/data.txt'
 
 ```
+
+## 11. 中文乱码
+
+`Dockerfile`增加 `ENV LANG C.UTF-8`
+
+如果需要增加中文字体支持， 可以参考: [给Docker镜像(Debian)添加中文支持和中文字体](https://blog.llcat.tech/2018/12/03/add-zh-CN-locales-and-fonts-in-docker-images/)
