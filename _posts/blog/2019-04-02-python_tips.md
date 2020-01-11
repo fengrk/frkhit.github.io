@@ -123,3 +123,32 @@ Dockerfile  中可以使用 `ENV PYTHONUNBUFFERED 1`.
 python -c 'import foo; print foo.hello()'
 ```
 
+指定执行路径：
+
+```
+PYTHONPATH=/opt/code/py python -c 'import foo; print foo.hello()'
+```
+
+## 10. 代码热加载
+
+`importlib` 提供了根据路径，动态加载模块的功能。
+
+```
+import sys
+import importlib
+
+
+def load_module(module_name: str):
+    """
+    加载模块
+    :param module_name: str, 例如 "util.new_util", "app_config"
+    :return: 
+    """
+    importlib.import_module(module_name)
+
+
+def delete_module(module_name: object):
+    """ 删除模块 """
+    if module_name in sys.modules:
+        del sys.modules[module_name]
+```
