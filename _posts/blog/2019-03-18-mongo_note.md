@@ -225,6 +225,18 @@ upsert=False,
 )
 ```
 
+### 3.4 set only not exists
+
+mongo 提供 `$setOnInsert` 操作符， 来实现当文档不存在才设置的功能。
+
+```
+db.collection.update(
+   <query>,
+   { $setOnInsert: { <field1>: <value1>, ... } },
+   { upsert: true }
+)
+```
+
 ## 4. 工具
 
 ### 4.1 导出 collection
@@ -276,4 +288,3 @@ mkdir -p dodo && chmod 777 dodo/ -R && cd dodo/
 # run mongo tools
 docker run --rm -v $(pwd):/workdir/ -w /workdir/ mongo:4.0 mongoimport --uri "mongodb://<username>:<password>@<host1>:<port1>,<host2>:<port2>/<database>?replicaSet=mgset-123456&authSource=admin" --collection <collection> --fields <field1>,<field2> <datafile>
 ```
-
