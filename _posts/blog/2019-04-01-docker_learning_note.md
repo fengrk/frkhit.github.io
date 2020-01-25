@@ -63,6 +63,7 @@ docker tag <image_id> image_name:latest
 ```docker tag <image_id> image_name:latest```
 
 ## 5. 使用外部文件
+
 ```
 # create Dockerfile
 echo 'FROM python:3.6
@@ -91,6 +92,7 @@ docker run -d -v /home/ubuntu/app:/app -p 5000:5000 diy/server
 - 执行多条命令: `docker run -d -w /app frkhit/docker-python:3.6-chrome sh -c "python jd_main.py; python main.py"`
 
 ## 7. Dockerfile常用命令示例
+
 - 复制多个文件: `COPY file_1 file_2 file_3 ./`
 - 添加作者信息: `MAINTAINER frkhit "frkhit@gmail.com"`
 
@@ -112,11 +114,12 @@ docker port <container_id>
 
 ## 9. docker充当命令行工具
 
-- `docker compose`命令行工具
+`docker compose`命令行工具
+
 详见 `https://github.com/docker/compose/releases` 中的 `run.sh`工具。
 
-
-- 运行 4.0版本的 mongoimport命令
+运行 4.0版本的 mongoimport命令
+  
 ```
 mkdir -p dodo && chmod 777 dodo/ -R && cd dodo/
 
