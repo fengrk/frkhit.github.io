@@ -172,3 +172,12 @@ curl -o out.file -sfL http:xxx.com
 wget -qO out.file http:xxx.com
 
 ```
+
+## 15. 关闭进程
+
+```
+for pid in `ps -ef | grep python3 | grep "server.py" | grep -v grep | awk '{print $2;}'`
+do
+    kill -9 $pid
+done
+```
