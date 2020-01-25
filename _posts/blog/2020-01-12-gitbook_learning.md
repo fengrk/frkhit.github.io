@@ -29,3 +29,46 @@ docker run --rm -v $(pwd)/sample:/book -p 4000:4000 frkhit/docker-practice:gitbo
 ```
 
 备注: 导出的 pdf 字体可能有问题, 可以参考[给Docker镜像(Debian)添加中文支持和中文字体](https://blog.llcat.tech/2018/12/03/add-zh-CN-locales-and-fonts-in-docker-images/)在 docker 中 安装必要的字体.
+
+## 2. 细节定制
+
+参考: [Gitbook 细节定制](https://zhuanlan.zhihu.com/p/27171995)
+
+### 2.1 去除 published by gitbook
+
+`book.json`中加入 css 文件:
+
+``` 
+"styles":{
+    "website": "./res/remove_publisher.css"
+}
+```
+
+`remove_publisher.css`文件:
+
+``` 
+.gitbook-link {
+    display: none !important;
+}
+```
+
+### 2.2 去除分享按钮
+
+`book.json`:
+
+``` 
+"plugins": [ "-sharing"],
+"links": {
+        "sharing": {
+            "all": null,
+            "facebook": null,
+            "google": null,
+            "twitter": null,
+            "weibo": null
+        }
+}
+```
+
+
+
+
