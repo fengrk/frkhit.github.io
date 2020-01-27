@@ -298,3 +298,31 @@ server {
     }
 }
 ```
+
+## 8. 安全验证
+
+生成安全文件
+
+```
+# install htpasswd 
+apt install apache2-utils
+
+# create db file
+htpasswd -c -d passwd.db user
+chmod 400 passwd.db
+```
+
+nginx 配置
+
+```
+server {
+    auth_basic  "secret";
+    auth_basic_user_file  /etc/nginx/conf.d/passwd.db;
+
+    ...
+}
+```
+
+*效果图*
+
+![效果图](../../../public/img/nginx_setting/nginx-2020-01-2716.18.08.png)
