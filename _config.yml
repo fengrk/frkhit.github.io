@@ -45,5 +45,6 @@ locals:
   archive: 归档
 
 # 插件
-#plugins:
+plugins:
+    - jekyll-paginate
 #  - hook-add-last-modified-date

@@ -58,7 +58,7 @@ python train.py complex
 
 模型运行情况如下：
 
-![模型运行情况](/public/img/aliyun_pai_eas/pai_eas.png)
+![模型运行情况](../../../public/img/aliyun_pai_eas/pai_eas.png)
 
 在打开模型的 `调用信息`， 在`公网调用地址`中，绑定公网。 
 

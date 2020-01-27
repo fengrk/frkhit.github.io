@@ -111,9 +111,9 @@ if __name__ == '__main__':
 
 普通截图
 
-![普通截图结果](/public/img/selenium_chrome/mofcom.png)
+![普通截图结果](../../../public/img/selenium_chrome/mofcom.png)
 
 全页面截图
 
-![全页面截图结果](/public/img/selenium_chrome/mofcom_full.png)
+![全页面截图结果](../../../public/img/selenium_chrome/mofcom_full.png)
 
