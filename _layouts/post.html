@@ -5,7 +5,7 @@ layout: base
   <div class="col-md-13 aside3-title">
     <br>
     <h2 id="#identifier">{{ page.title }}</h2>
-    {{ page.date | date:"%Y年%m月%d日" }}{% if page.last-modified-date  %}更新时间: {{ page.last-modified-date | date:"%Y年%m月%d日" }}>{% endif %}
+    {{ page.date | date:"%Y年%m月%d日" }}{% if page.last-modified-date  %}&nbsp;&nbsp;更新时间:{{ page.last-modified-date | date:"%Y年%m月%d日" }}{% endif %}
   </div>
   <div class="col-md-13 aside3-content">
     <hr>
