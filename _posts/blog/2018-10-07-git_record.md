@@ -2,7 +2,8 @@
 layout: post
 title: git使用笔记
 category: 技术
-tags: git
+tags: 
+    - git
 keywords: 
 description: 
 ---

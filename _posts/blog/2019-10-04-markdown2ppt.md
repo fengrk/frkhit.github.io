@@ -2,7 +2,11 @@
 layout: post
 title:  使用 markdown 制作 ppt
 category: 技术
-tags:  markdown, ppt, reveal, vscode
+tags:  
+    - markdown
+    - ppt
+    - reveal
+    - vscode
 keywords: 
 description: 
 ---

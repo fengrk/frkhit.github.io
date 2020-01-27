@@ -2,7 +2,8 @@
 layout: post
 title: ssh over socks5
 category: 技术
-tags: ssh
+tags: 
+    - ssh
 keywords: 
 description: 
 ---

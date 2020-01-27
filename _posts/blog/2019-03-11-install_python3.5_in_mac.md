@@ -2,7 +2,8 @@
 layout: post
 title: mac中安装python3.5
 category: 技术
-tags: mac
+tags: 
+    - mac
 keywords:
 description: 
 ---

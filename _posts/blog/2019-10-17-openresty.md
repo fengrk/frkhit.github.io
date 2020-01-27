@@ -2,7 +2,9 @@
 layout: post
 title:  openresty使用笔记
 category: 技术
-tags:  docker, openresty
+tags:  
+    - docker
+    - openresty
 keywords: 
 description: 
 ---

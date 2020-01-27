@@ -2,7 +2,8 @@
 layout: post
 title: 安装docker-compose
 category: 技术
-tags: docker
+tags: 
+    - docker
 keywords: 
 description: 
 ---

@@ -2,7 +2,8 @@
 layout: post
 title: nginx 配置
 category: 技术
-tags: nginx
+tags: 
+    - nginx
 keywords: 
 description: 
 ---

@@ -2,7 +2,8 @@
 layout: post
 title: asyncio异步请求示例
 category: 技术
-tags: python
+tags: 
+    - python
 keywords: 
 description: 
 ---

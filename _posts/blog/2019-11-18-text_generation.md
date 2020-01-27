@@ -2,7 +2,8 @@
 layout: post
 title:  文本生成资料汇总
 category: 技术
-tags:  NLP
+tags:  
+    - NLP
 keywords: 
 description: 
 ---

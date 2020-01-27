@@ -2,7 +2,9 @@
 layout: post
 title:  scrapy项目作为工具库使用
 category: 技术
-tags:  scrapy, python
+tags:  
+    - scrapy
+    - python
 keywords: 
 description: 
 ---

@@ -2,7 +2,9 @@
 layout: post
 title: flask 笔记
 category: 技术
-tags: python,  flask
+tags: 
+    - python
+    - flask
 keywords: 
 description: 
 ---

@@ -2,7 +2,10 @@
 layout: post
 title:  spark 集群试用
 category: 技术
-tags:  spark, docker, python
+tags:  
+    - spark
+    - docker
+    - python
 keywords: 
 description: 
 ---

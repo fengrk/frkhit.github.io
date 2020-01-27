@@ -2,7 +2,8 @@
 layout: post
 title: virtualenv中安装anaconda模块
 category: 技术
-tags: python
+tags: 
+    - python
 keywords: 
 description: 
 ---

@@ -2,7 +2,8 @@
 layout: post
 title: shadowsocks+privoxy设置本地代理
 category: 技术
-tags: shadowsocks
+tags: 
+    - shadowsocks
 keywords: 
 description: 
 ---

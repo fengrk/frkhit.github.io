@@ -2,7 +2,9 @@
 layout: post
 title:  使用 tracemalloc 分析 python 内存使用情况
 category: 技术
-tags:  OOM, python
+tags:  
+    - OOM
+    - python
 keywords: 
 description: 
 ---

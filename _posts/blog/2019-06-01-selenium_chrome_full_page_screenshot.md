@@ -2,7 +2,9 @@
 layout: post
 title: selenium + chrome 全页面截图
 category: 技术
-tags: selenium, chrome
+tags: 
+    - selenium
+    - chrome
 keywords: 
 description: 
 ---

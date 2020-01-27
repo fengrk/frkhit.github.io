@@ -2,7 +2,8 @@
 layout: post
 title:  百度网盘命令行工具 bypy
 category: 技术
-tags:  python
+tags:  
+    - python
 keywords: 
 description: 
 ---

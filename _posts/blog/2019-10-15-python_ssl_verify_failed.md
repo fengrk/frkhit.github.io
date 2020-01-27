@@ -2,7 +2,10 @@
 layout: post
 title:  mac下 python 报错 CERTIFICATE_VERIFY_FAILED
 category: 技术
-tags:  python, mac, ssl
+tags:  
+    - python
+    - mac
+    - ssl
 keywords: 
 description: 
 ---

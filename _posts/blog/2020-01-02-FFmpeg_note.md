@@ -2,7 +2,8 @@
 layout: post
 title:  FFmpeg 使用总结
 category: 技术
-tags:  FFmpeg
+tags:  
+    - FFmpeg
 keywords: 
 description: 
 ---

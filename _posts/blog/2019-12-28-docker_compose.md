@@ -2,7 +2,9 @@
 layout: post
 title:  docker-compose 笔记
 category: 技术
-tags:  docker, docker-compose
+tags:  
+    - docker
+    - docker-compose
 keywords: 
 description: 
 ---

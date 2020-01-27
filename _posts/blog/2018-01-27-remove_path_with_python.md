@@ -2,7 +2,8 @@
 layout: post
 title: python删除文件或目录
 category: 技术
-tags: python
+tags: 
+    - python
 keywords: 
 description: 
 ---

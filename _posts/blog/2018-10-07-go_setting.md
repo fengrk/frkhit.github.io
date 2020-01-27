@@ -2,7 +2,8 @@
 layout: post
 title: golang setting
 category: 技术
-tags: golang
+tags: 
+    - golang
 keywords: 
 description: 
 ---

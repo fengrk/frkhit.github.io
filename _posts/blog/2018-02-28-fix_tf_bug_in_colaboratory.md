@@ -2,7 +2,8 @@
 layout: post
 title: 修复colaboratory中tensorflow的bug
 category: 技术
-tags: python
+tags: 
+    - python
 keywords: 
 description: 
 ---

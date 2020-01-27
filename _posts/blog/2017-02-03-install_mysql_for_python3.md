@@ -2,7 +2,8 @@
 layout: post
 title: python3安装mysql
 category: 技术
-tags: python
+tags: 
+    - python
 keywords: 
 description: 
 ---

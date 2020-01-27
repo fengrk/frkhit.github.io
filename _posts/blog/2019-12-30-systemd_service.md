@@ -2,7 +2,9 @@
 layout: post
 title:  Systemd 教程
 category: 技术
-tags:  Systemd, ubuntu
+tags:  
+    - Systemd
+    - ubuntu
 keywords: 
 description: 
 ---

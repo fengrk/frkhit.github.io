@@ -2,7 +2,10 @@
 layout: post
 title:  docker-compose 安装方法
 category: 技术
-tags:  docker-compose, mac, linux
+tags:  
+    - docker-compose
+    - mac
+    - linux
 keywords: 
 description: 
 ---

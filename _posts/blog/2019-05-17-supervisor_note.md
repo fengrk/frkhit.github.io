@@ -2,7 +2,9 @@
 layout: post
 title: supervisor 使用总结
 category: 技术
-tags: supervisor, linux
+tags: 
+    - supervisor
+    - linux
 keywords: 
 description: 
 ---

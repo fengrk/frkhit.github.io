@@ -2,7 +2,8 @@
 layout: post
 title: No module named 'Crypto' on Mac
 category: 技术
-tags: mac
+tags: 
+    - mac
 keywords:
 description: 
 ---

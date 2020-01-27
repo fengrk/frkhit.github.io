@@ -2,7 +2,8 @@
 layout: post
 title: tornado使用总结
 category: 技术
-tags: tornado
+tags: 
+    - tornado
 keywords: 
 description: 
 ---

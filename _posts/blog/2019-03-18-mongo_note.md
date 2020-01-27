@@ -2,7 +2,8 @@
 layout: post
 title: mongo学习笔记
 category: 技术
-tags: mongo
+tags: 
+    - mongo
 keywords: 
 description: 
 ---

@@ -2,7 +2,9 @@
 layout: post
 title: shell 学习笔记
 category: 技术
-tags: ubuntu, shell
+tags: 
+    - ubuntu
+    - shell
 keywords: 
 description: 
 ---

@@ -2,7 +2,8 @@
 layout: post
 title: docker引起的空间不足
 category: 技术
-tags: docker
+tags: 
+    - docker
 keywords: 
 description: 
 ---

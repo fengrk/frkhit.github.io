@@ -2,7 +2,8 @@
 layout: post
 title: ubuntu环境变量设置
 category: 技术
-tags: ubuntu
+tags: 
+    - ubuntu
 keywords: 
 description: 
 ---

@@ -2,7 +2,9 @@
 layout: post
 title: 基于sqlite3实现数据缓存
 category: 技术
-tags: python, sqlite
+tags: 
+    - python
+    - sqlite
 keywords: 
 description: 
 ---

@@ -2,7 +2,10 @@
 layout: post
 title: 发布自己的 python 包
 category: 技术
-tags: python, pypi, travis
+tags: 
+    - python
+    - pypi
+    - travis
 keywords: 
 description: 
 ---

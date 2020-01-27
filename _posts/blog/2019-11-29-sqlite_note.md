@@ -2,7 +2,9 @@
 layout: post
 title:  sqlite 使用总结
 category: 技术
-tags:  python, sqlite
+tags:  
+    - python
+    - sqlite
 keywords: 
 description: 
 ---

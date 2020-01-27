@@ -2,7 +2,9 @@
 layout: post
 title: mac 配置
 category: 技术
-tags: mac, osx
+tags: 
+    - mac
+    - osx
 keywords: 
 description: 
 ---

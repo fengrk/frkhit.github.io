@@ -2,7 +2,9 @@
 layout: post
 title:  gitbook 笔记
 category: 技术
-tags:  gitbook, docker
+tags:  
+    - gitbook
+    - docker
 keywords: 
 description: 
 ---

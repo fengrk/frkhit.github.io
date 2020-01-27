@@ -2,7 +2,9 @@
 layout: post
 title:  python pickle 实践
 category: 技术
-tags:   python, pickle
+tags:   
+    - python
+    - pickle
 keywords: 
 description: 
 ---

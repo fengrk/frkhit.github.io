@@ -2,7 +2,11 @@
 layout: post
 title:  mac 下安装 adb 
 category: 技术
-tags: mac, adb, android, airtest
+tags: 
+    - mac
+    - adb
+    - android
+    - airtest
 keywords: 
 description: 
 ---

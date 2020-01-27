@@ -2,7 +2,8 @@
 layout: post
 title: 再读《MongoDB权威指南》
 category: 技术
-tags: mongo
+tags: 
+    - mongo
 keywords: 
 description: 
 ---

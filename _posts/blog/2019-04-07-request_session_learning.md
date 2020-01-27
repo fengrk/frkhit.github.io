@@ -2,7 +2,12 @@
 layout: post
 title: session请求示例
 category: 技术
-tags: python, session, tornado, requests, scrapy
+tags: 
+    - python
+    - session
+    - tornado
+    - requests
+    - scrapy
 keywords: 
 description: 
 ---

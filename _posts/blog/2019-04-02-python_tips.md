@@ -2,7 +2,8 @@
 layout: post
 title: python小技巧
 category: 技术
-tags: python
+tags: 
+    - python
 keywords: 
 description: 
 ---

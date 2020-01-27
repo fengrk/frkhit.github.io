@@ -2,7 +2,10 @@
 layout: post
 title:  docker运行 pyppeteer
 category: 技术
-tags:  docker, puppeteer, pyppeteer
+tags:  
+    - docker
+    - puppeteer
+    - pyppeteer
 keywords: 
 description: 
 ---

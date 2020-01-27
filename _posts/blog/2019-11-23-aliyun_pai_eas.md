@@ -2,7 +2,8 @@
 layout: post
 title:  阿里云 PAI-EAS 试用报告
 category: 技术
-tags:  gpt2
+tags:  
+    - gpt2
 keywords: 
 description: 
 ---

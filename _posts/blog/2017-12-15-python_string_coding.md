@@ -2,7 +2,8 @@
 layout: post
 title: 解决python中遇到的乱码问题
 category: 技术
-tags: python
+tags: 
+    - python
 keywords: 
 description: 
 ---

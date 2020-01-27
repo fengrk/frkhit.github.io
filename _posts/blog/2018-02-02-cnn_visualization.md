@@ -2,7 +2,8 @@
 layout: post
 title: CNN可视化研究
 category: 技术
-tags: CNN
+tags: 
+    - CNN
 keywords: 
 description: 
 ---
