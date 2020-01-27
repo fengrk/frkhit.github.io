@@ -14,6 +14,7 @@ title: 日志
 description: blog for frkhit
 url: https://blog.arkfeng.xyz
 rss_url: /pages/atom.xml
+baseurl: ""
 
 # gavatar头像及Favicon
 gavatar: /public/img/avatar.png
