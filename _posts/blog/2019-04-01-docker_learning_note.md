@@ -90,6 +90,7 @@ docker run -d -v /home/ubuntu/app:/app -p 5000:5000 diy/server
 - 删除镜像标签: `docker rmi -f <image_name>:<tag>`
 - 指定工作目录: `docker run -d -v /home/frkhit/rkfeng/server:/app  -w /app frkhit/docker-python:3.6-chrome python main.py`
 - 使用宿主时区：`docker run -d  -v /etc/localtime:/etc/localtime:ro ...`
+- 运行时指定时区：`docker run -d --env TZ=Asia/Shanghai ...`
 - 执行多条命令: `docker run -d -w /app frkhit/docker-python:3.6-chrome sh -c "python jd_main.py; python main.py"`
 
 ## 7. Dockerfile常用命令示例
