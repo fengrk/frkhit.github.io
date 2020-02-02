@@ -82,3 +82,19 @@ source ~/.bash_profile
 cheat xargs
 cheat less
 ```
+
+## 3. 安装常用软件
+
+### 3.1 安装 redis-cli
+
+```
+brew tap ringohub/redis-cli
+
+brew update && brew doctor
+
+brew install redis-cli
+```
+
+[参考](https://stackoverflow.com/a/55733092/5588431)
+
+
