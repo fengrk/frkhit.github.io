@@ -95,6 +95,15 @@ brew update && brew doctor
 brew install redis-cli
 ```
 
+### 3.2 系统命令
+
+```
+# tac
+alias tac='tail -r '
+
+
+```
+
 [参考](https://stackoverflow.com/a/55733092/5588431)
 
 
