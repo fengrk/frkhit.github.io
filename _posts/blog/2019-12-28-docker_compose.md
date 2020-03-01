@@ -44,7 +44,7 @@ docker volume rm vo-1
 ## 2. 网络
 
 
-## 2.1 HOST
+### 2.1 HOST
 
 `nginx` 可以通过 `127.0.0.1:6000` 访问宿主机的 `127.0.0.1:6000` 服务
 
@@ -60,7 +60,7 @@ services:
 
 ```
 
-## 2.2 Bridge
+### 2.2 Bridge
 
 ```
 services:
@@ -86,7 +86,7 @@ networks:
 
 ```
 
-## 2.3 bridge + ip 分配
+### 2.3 bridge + ip 分配
 
 
 ```
@@ -117,3 +117,7 @@ networks:
             config:
                 - subnet: 10.5.0.0/16
 ```
+
+## 3. 常用命令
+
+- 多实例： `docker-compose up --scale kafka=3 -d`
