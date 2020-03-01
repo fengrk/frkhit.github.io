@@ -325,4 +325,4 @@ server {
 
 *效果图*
 
-![效果图](../../../public/img/nginx_setting/nginx-2020-01-2716.18.08.png)
+![效果图](../../../../public/img/nginx_setting/nginx-2020-01-2716.18.08.png)

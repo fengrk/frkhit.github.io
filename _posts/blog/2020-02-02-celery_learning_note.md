@@ -118,4 +118,4 @@ docker-compose -f docker-compose-redis-priority.yml up
 
 测试结果：
 
-![celery redis 优先级测试结果](../../../public/img/celery_learning_note/screenshot.png)
+![celery redis 优先级测试结果](../../../../public/img/celery_learning_note/screenshot.png)

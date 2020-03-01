@@ -13,10 +13,10 @@ description:
 
 # 1. mtcnn网络结构
 ## 1.1 pnet网络结构
-![pnet网络结构](../../../public/img/mtcnn/pnet.png)
+![pnet网络结构](../../../../public/img/mtcnn/pnet.png)
 
 ## 1.2 rnet网络结构
-![rnet网络结构](../../../public/img/mtcnn/rnet.png)
+![rnet网络结构](../../../../public/img/mtcnn/rnet.png)
 
 ## 1.3 onet网络结构
-![onet网络结构](../../../public/img/mtcnn/onet.png)
+![onet网络结构](../../../../public/img/mtcnn/onet.png)
