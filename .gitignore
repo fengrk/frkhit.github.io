@@ -115,3 +115,5 @@ _drafts/
 # jekyll
 .jekyll-cache/
 _site/
+.bundle/
+Gemfile.lock

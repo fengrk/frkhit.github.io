@@ -1,50 +1,108 @@
-permalink: /:year/:month/:day/:title.html
-paginate: 10
-markdown: kramdown
-
-# 作者信息
-author: 
-  name: frkhit
-  email: frkhit@gmail.com
-  link: https://blog.arkfeng.xyz
-  github: https://github.com/frkhit
-
-# 站点信息
-title: 日志
-description: blog for frkhit
-url: https://blog.arkfeng.xyz
-rss_url: /pages/atom.xml
+# ---------------- #
+#   Main Configs   #
+# ---------------- #
 baseurl: ""
+url: https://blog.arkfeng.xyz
+date_format: "ordinal"
+title: RK.Feng的博客
+subtitle: ""
+description: "blog for frkhit"
+keywords: RK Feng, frkhit
+timezone: Asia/Shanghai
+encoding: "utf-8"
+side_bar_repo_limit: 5
 
-# gavatar头像及Favicon
-gavatar: /public/img/avatar.png
-favicon: /public/img/avatar.png
+# ---------------- #
+#      Author      #
+# ---------------- #
+author: RK Feng
+organization:
+organization_url:
+github_username: frkhit
+location: GuangZhou, China
+email: frkhit@gmail.com
 
-# google analytics 设置
-ga:
- id: UA-143320942-1
- url: blog.arkfeng.xyz
+# ---------------- #
+#    Navigation    #
+# ---------------- #
+navs:
+    -   href: /
+        label: 首页
+    
+    -   href: /categories/
+        label: 分类
+    
+    #   -
+    #     href: /archives/
+    #     label: 归档
+    
+    -   href: /wiki/
+        label: 维基
+    
+    -   href: /links/
+        label: 链接
+    
+    -   href: /about/
+        label: 关于
 
-# disqus 设置
-#disqus:
-# shortname: blog-arkfeng-xyz
+# ---------------- #
+#       RSS        #
+# ---------------- #
+subscribe_rss: /feed.xml
+#rss_url: /pages/atom.xml
 
-# 主题设置，自动激活某个标签
-active: 技术
-
-# 首页除了最新文章外显示分类
-cates:
-  - python
-  - ubuntu
-
-# 中文本地化
-locals:
-  tags: 标签
-  about: 关于
-  newest: 最新文章
-  archive: 归档
-
-# 插件
+# ---------------- #
+#      Jekyll      #
+# ---------------- #
+markdown: kramdown
+kramdown:
+    input: GFM
+highlighter: rouge
+paginate: 10
+lsi: false
+quiet: false
+excerpt_separator: "\n\n"
+permalink: /:year/:month/:day/:title/
 plugins:
+    - jekyll-github-metadata
+    - rouge
+    #     - jekyll-html-pipeline
     - jekyll-paginate
-#  - hook-add-last-modified-date
+    - jekyll-sitemap
+    - jekyll-feed
+    - jemoji
+#     - jekyll-mentions
+collections:
+    wiki:
+        output: true
+        permalink: /wiki/:path/
+
+repository: frkhit/frkhit.github.io
+
+# ---------------- #
+#      Comments    #
+# ---------------- #
+
+# 在使用其它评论组件时可点击显示 Disqus
+lazy_load_disqus: false
+
+# ---------------- #
+#      Search      #
+# ---------------- #
+simple_jekyll_search:
+    # 是否支持全文搜索
+    fulltext: false
+    # 最多显示多少条搜索结果
+    limit: 10
+
+# ---------------- #
+#    Analytics     #
+# ---------------- #
+google:
+    analytics_id: UA-143320942-1
+
+# ---------------- #
+#    备案信息设置     #
+# ---------------- #
+#branding:
+#    info: ""
