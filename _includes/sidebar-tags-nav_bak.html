@@ -1,0 +1,27 @@
+
+<h3>Blog Tags</h3>
+<div id="blog-tags">
+  <ul class="list-group">
+      {% capture tags %}
+        {% for tag in site.tags %}
+            {{ tag[1].size | plus: 1000 }}#{{ tag[0] }}#{{ tag[1].size }}
+        {% endfor %}
+      {% endcapture %}
+    {% assign sorted_tags = tags | split:' ' | sort %}
+    {% for tag in sorted_tags %}{% assign tag_items = tag | split: '#' %}
+    <li class="list-group-item">
+    <a href="#{{ tag_items[1] }}">{{ tag_items[1] | first }}</a>
+    <span class="badge">{{ tag_items[2] }}</span>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+
+<script type="text/javascript">
+
+  $(document).ready(function(){
+    $("#blog-tags li").css('text-transform','capitalize')
+  });
+
+</script>
+
