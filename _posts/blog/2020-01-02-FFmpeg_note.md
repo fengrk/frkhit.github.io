@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  FFmpeg 使用总结
+title: FFmpeg 使用总结
 category: 技术
-tags:  
+tags: 
     - FFmpeg
 keywords: 
 description: 
@@ -10,12 +10,14 @@ description:
 
 # FFmpeg 使用总结
 
+
 ## 1. 提取音频
 
 ```
 # 提取 mp3 音轨
 ffmpeg -y -i input.mp4 -write_xing 0 output.mp3
 ```
+
 
 ## 2. 音频转码
 
