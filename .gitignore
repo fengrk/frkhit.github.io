@@ -114,6 +114,7 @@ _drafts/
 
 # jekyll
 .jekyll-cache/
+.jekyll-metadata
 _site/
 .bundle/
 Gemfile.lock
