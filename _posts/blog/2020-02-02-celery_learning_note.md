@@ -119,3 +119,70 @@ docker-compose -f docker-compose-redis-priority.yml up
 测试结果：
 
 ![celery redis 优先级测试结果](../../../../public/img/celery_learning_note/screenshot.png)
+
+
+## 2. task 加 装饰符
+
+有些python调度器, 如 `apscheduler`, 在任务函数上增加装饰符, 会导致方法找不到的错误. 
+
+实践证明, celery 的 task 函数可以增加装饰符. 示例源码见[celery-learning](https://github.com/frkhit/celery-learning/tree/task_decorator).
+
+
+装饰符方法示例
+
+``` 
+import functools
+import time
+
+def simple_log(func):
+    @functools.wraps(func)
+    def wrapper(*args, **kw):
+        time_start = time.time()
+        try:
+            result = func(*args, **kw)
+            print('call {}, time_cost {:.2f}, success True'.format(func.__name__, time.time() - time_start))
+            return result
+        except:
+            print('call {}, time_cost {:.2f}, success False'.format(func.__name__, time.time() - time_start))
+            raise
+
+    return wrapper
+``` 
+
+tasks 上使用装饰符:
+
+```
+import time
+
+from celery_proj.app import celery_app
+from libs.demo_utils import demo_add, simple_log
+
+
+@celery_app.task
+@simple_log
+def demo_sum(a: float, b: float, c: float) -> float:
+    time.sleep(5)
+    _result = demo_add(demo_add(a, b), c)
+    print("demo_sum: a {}, b {}, c {} => {}".format(a, b, c, _result))
+    return _result
+
+
+@celery_app.task
+@simple_log
+def demo_func(a: float, b: float) -> float:
+    time.sleep(1)
+    _result = a * 2 + b * b
+    print("demo_func: a {}, b {} => {}".format(a, b, _result))
+    return _result
+
+```
+
+运行示例:
+
+``` 
+docker-compose up -d
+```
+
+结果示例如下, 证实装饰符的使用不会影响 celery task 的执行.
+
+![celery task 装饰符测试结果](../../../../public/img/celery_learning_note/task-decorator.png)
