@@ -186,3 +186,66 @@ docker-compose up -d
 结果示例如下, 证实装饰符的使用不会影响 celery task 的执行.
 
 ![celery task 装饰符测试结果](../../../../public/img/celery_learning_note/task-decorator.png)
+
+
+## 3. 定时任务
+
+示例源码见[celery-learning:scheduler_main](https://github.com/frkhit/celery-learning/blob/master/demo_proj/celery_proj/scheduler_main.py).
+
+示例代码：
+
+```
+# coding:utf-8
+__author__ = 'frkhit'
+
+import datetime
+
+from celery import Celery
+from celery.schedules import crontab
+
+from celery_proj import basic_config
+
+basic_config.CELERYBEAT_SCHEDULE = {
+    'trigger_minute_clock': {
+        'task': 'tasks.trigger_minute_clock',
+        'schedule': crontab(minute="*/1"),
+    },
+    'trigger_minute_notice': {
+        'task': 'tasks.trigger_minute_notice',
+        'schedule': crontab(minute="*/2", )
+    },
+}
+QUEUE_SCHEDULE_DEFAULT = "main-schedule"
+basic_config.CELERY_TASK_DEFAULT_QUEUE = QUEUE_SCHEDULE_DEFAULT
+basic_config.CELERY_TASK_CREATE_MISSING_QUEUES = True
+
+APP_NAME = 'scheduler_main'
+app = Celery(APP_NAME)
+app.config_from_object(basic_config)
+
+# 这一行不能少。 不写的话， 调度器只能发出触发信号， 但 worker 不会执行
+app.conf.task_routes = {'tasks.*': {'queue': QUEUE_SCHEDULE_DEFAULT}}
+
+
+@app.task(name="tasks.trigger_minute_clock")
+def print_time():
+    print("[print time] msg is {}".format(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")))
+
+
+@app.task(name="tasks.trigger_minute_notice")
+def send_notice():
+    print("[send notice] msg is {}".format(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")))
+
+```
+
+定时器及 worker 启动命令:
+
+```
+celery -A celery_proj.scheduler_main worker --loglevel=info -n celery-scheduler-demo --autoscale=2,0 -Q main-schedule -B -s /scheduler.db
+```
+
+示例启动方式：
+
+```
+docker-compose up -d
+```
