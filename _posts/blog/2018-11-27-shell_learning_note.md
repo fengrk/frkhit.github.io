@@ -183,3 +183,89 @@ do
     kill -9 $pid
 done
 ```
+
+## 16. grep + awk + xargs
+
+在实践中， 需要批量处理数据文件。 处理完成后， 将结果写入命名方式为 `原文件名 + .upload` 的结果文件中。
+
+操作日志记录在 `simple.log` 中， 其日志内容格式如下：
+
+```
+2020-03-21 10:00:00 output to file: /tmp/abc_1.log.upload
+2020-03-21 10:00:00 xxxx
+2020-03-21 10:10:00 output to file: /tmp/abc_2.log.upload
+2020-03-21 10:10:00 xxx1xxx
+
+2020-03-21 10:20:00 output to file: /tmp/abc_4.log.upload
+2020-03-21 10:20:00 ....
+
+```
+
+现在需要删除已经处理的原文件。
+
+可以使用 `grep + awk + xargs` 实现：
+
+```
+for filename in $(cat simple.log | grep "output to file" | awk '{print $NF}' | awk -F "/" '{print $NF}' ); do
+    tmp_file="/tmp/${filename%%.upload}"
+    if [ -f "$tmp_file" ]; then
+      echo "$tmp_file can remove"
+      rm "$tmp_file"
+    fi
+done
+
+```
+
+## 17. 删除修改日期为一天以前的日志文件
+
+```
+#!/bin/bash
+
+while IFS= read -r -d '' file
+do
+  if [[ $file =~ "tmp_" ]]; then
+      let count++
+      echo "rm file $file"
+      rm "$file"
+  fi
+
+done <   <(find /tmp/ -maxdepth 1 -mtime +1 -print0)
+
+echo "remove $count files from /tmp/ "
+```
+
+## 18. 删除以日期命名的文件目录
+
+临时日志目录， 存在以下子目录：
+
+```
+/var/log/result_20200102
+/var/log/result_20200103
+/var/log/result_20200104
+....
+/var/log/result_20200324
+
+```
+
+现在需要删除昨天以前的子目录， 具体实现如下
+
+```
+#!/bin/bash
+
+# 删除临时文件
+today_str=$(date +%Y%m%d)
+yesterday_str=$(date -d -1day +%Y%m%d)
+for filename in /var/log/result_2020*; do
+    if [[ $filename =~ $today_str ]]; then
+      echo "$filename today"
+    else
+      if [[ $filename =~ $yesterday_str ]]; then
+        echo "$filename yesterday"
+      else
+        echo "$filename remove"
+        rm -r "$filename"
+      fi
+    fi
+done
+
+```
