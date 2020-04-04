@@ -117,4 +117,6 @@ _drafts/
 .jekyll-metadata
 _site/
 .bundle/
+.bundle.tar.gz*
 Gemfile.lock
+
