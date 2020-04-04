@@ -80,6 +80,11 @@ Project：
 - `db.inventory.find({"item": {"$type": 10}})`: 类型检查, 查询值为None的记录
 - `db.inventory.find({"item": {"$exists": False}})`: 不存在
 
+### 1.5 固定集合(Capped Collection)
+
+- 判断当前集合是否是固定集合: `db.collection.isCapped()`
+- 转化为固定集合(原数据可能会丢失): `db.runCommand({"convertToCapped":"my_coll",size:2000000000, max:500000})`. max 为文档数量, size 为内容大小
+
 
 ## 2.聚合操作
 
