@@ -147,3 +147,19 @@ cat input.txt | docker exec -i tor-1 /bin/bash -c 'cat > /app/data.txt'
 `Dockerfile`增加 `ENV LANG C.UTF-8`
 
 如果需要增加中文字体支持， 可以参考: [给Docker镜像(Debian)添加中文支持和中文字体](https://blog.llcat.tech/2018/12/03/add-zh-CN-locales-and-fonts-in-docker-images/)
+
+
+## 12. 支持 `crontab`
+
+容器中安装 `crontab`, `Dockerfile` 配置:
+
+``` 
+# add crontab
+RUN apt-get -y install cron && \
+    echo '*/10 * * * * date >> /date.log ' >> /etc/cron.d/hello-cron && \
+    crontab /etc/cron.d/hello-cron && \
+    rm -rf /var/lib/apt/lists/*
+
+```
+
+启动命令增加 `cron && ...`
