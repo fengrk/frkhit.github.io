@@ -153,3 +153,91 @@ def delete_module(module_name: object):
     if module_name in sys.modules:
         del sys.modules[module_name]
 ```
+
+## 11. logger 启用的简单代码
+
+``` 
+import logging
+
+logger = logging.getLogger()
+
+logger.setLevel(logging.INFO)
+ch = logging.StreamHandler()
+ch.setLevel(logging.INFO)
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+ch.setFormatter(formatter)
+logger.addHandler(ch)
+
+logger.info("hello world!")
+
+```
+
+## 12. urllib 遇到 ssl 证书错误
+
+在一些场合必须使用 python 内置 `urllib` 库. `urllib` 在请求 `https` 时, 会因 `ssl` 证书错误, 而崩溃.
+
+一种临时性的解决方法如下:
+
+```
+import ssl
+import urllib.request
+
+ssl._create_default_https_context = ssl._create_unverified_context
+
+params = json.dumps({"a":"b", "c": 123})
+req = urllib.request.Request(url, data=params.encode('utf-8'), headers={'content-type': 'application/json'})
+response = urllib.request.urlopen(req)
+content = response.read().decode('utf-8')
+print(content)
+
+```
+
+## 13. zip 压缩文件
+
+```
+import os
+import unittest
+import zipfile
+
+
+def zip_compress_file(src_file: str, zip_file_name: str):
+    with zipfile.ZipFile(zip_file_name, mode="w") as zf:
+        zf.write(src_file, os.path.basename(src_file), compress_type=zipfile.ZIP_DEFLATED)
+
+
+def zip_uncompress_file(zip_file_name: str, extract_dir: str):
+    with zipfile.ZipFile(zip_file_name) as zf:
+        zf.extractall('{}/'.format(extract_dir.rstrip("/")))
+
+
+class TestPython(unittest.TestCase):
+    def testZip(self):
+        """ """
+        content = "dfadfdasfasdf;ksafk;asdfk;asf,'saf,as"
+        file_1 = os.path.expanduser("~/bac.text")
+        tar_file = "./x.zip"
+
+        try:
+            with open(file_1, "w") as f:
+                f.write(content)
+
+            # compress
+            zip_compress_file(src_file=file_1, zip_file_name=tar_file)
+
+            self.assertTrue(os.path.exists(tar_file))
+            os.remove(file_1)
+            self.assertTrue(not os.path.exists(file_1))
+
+            # result
+            zip_uncompress_file(zip_file_name=tar_file, extract_dir=os.path.dirname(os.path.abspath(file_1)))
+
+            self.assertTrue(os.path.exists(file_1))
+            with open(file_1, "r") as f:
+                new_content = f.read()
+                self.assertTrue(content == new_content)
+        finally:
+            for file in [tar_file, file_1]:
+                if os.path.exists(file):
+                    os.remove(file)
+
+```
