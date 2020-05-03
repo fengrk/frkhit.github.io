@@ -269,3 +269,28 @@ for filename in /var/log/result_2020*; do
 done
 
 ```
+
+## 19. 文本替换
+
+linux 版本:
+
+``` 
+# 找到所有 py 文件, 将 
+# print("data is {}".format(data))  
+# 替换为 
+# print("数据 是 {}".format(data))
+
+find . -name "*.py" -exec sed -i s/print\(\"data\ is\ \{/print\(\"数据\ 是\ \{/g {} +
+
+```
+
+mac 略有不同:
+``` 
+# 找到所有 py 文件, 将 
+# print("data is {}".format(data))  
+# 替换为 
+# print("数据 是 {}".format(data))
+
+find . -name "*.py" -exec sed -i '' s/print\(\"data\ is\ \{/print\(\"数据\ 是\ \{/g {} +
+
+```
