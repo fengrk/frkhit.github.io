@@ -294,3 +294,19 @@ mac 略有不同:
 find . -name "*.py" -exec sed -i '' s/print\(\"data\ is\ \{/print\(\"数据\ 是\ \{/g {} +
 
 ```
+
+## 20. pushd 和 popd
+
+``` 
+cd ~
+
+# cd /tmp and do something
+pushd /tmp/
+    echo "abc" > abc.txt
+    tar -czvf abc.txt.tar.gz abc.txt
+popd
+
+# backup to ~
+ls ./
+
+```
