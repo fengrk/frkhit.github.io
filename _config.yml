@@ -68,10 +68,6 @@ plugins:
     - jekyll-feed
     - jemoji
 #     - jekyll-mentions
-collections:
-    wiki:
-        output: true
-        permalink: /wiki/:path/
 
 repository: frkhit/frkhit.github.io
 
