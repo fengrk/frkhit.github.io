@@ -326,3 +326,23 @@ server {
 *效果图*
 
 ![效果图](../../../../public/img/nginx_setting/nginx-2020-01-2716.18.08.png)
+
+
+## 9. 仅后端使用安全验证
+
+nginx 配置
+
+```
+server {
+    location ~ ^/api {
+        rewrite ^/api(.*)$ $1 break;
+        proxy_pass http://127.0.0.1:6666;
+        proxy_set_header Authorization "Basic YWRtaW46YWRtaW4xMjM=";
+        proxy_pass_header  Authorization;
+        proxy_connect_timeout 300;
+        proxy_read_timeout 300;
+        proxy_send_timeout 300;
+    }
+    ...
+}
+```
