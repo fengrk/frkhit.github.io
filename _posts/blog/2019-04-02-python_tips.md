@@ -36,6 +36,28 @@ tar -cvf /path/to/foo.tar /path/to/foo/
 ....
 ```
 
+*更新*
+
+如果使用 `cheat` 过程中, 提示 `找不到 cheatsheet`, 换一种方式安装:
+
+``` 
+# 卸载 python cheat
+python -m pip uninstall -y cheat
+
+# 下载对应版本的 cheat 
+# link: https://github.com/cheat/cheat/releases
+
+# 安装
+chmod +x cheat-linux-amd64 && sudo mv cheat-linux-amd64 /usr/local/bin/cheat
+
+# 首次运行, 会提示安装 cheatsheet 文件
+
+# 使用
+cheat tar
+
+```
+
+
 ## 4. pip 工具
 
 逐行安装, 忽略错误:
@@ -47,6 +69,10 @@ cat requirements.txt | xargs -n 1 python -m pip install
 ```
 # python3 or python2
 python -m http.server || python -m SimpleHTTPServer
+
+# bind addr
+python -m http.server -b 127.0.0.1 8080
+
 ```
 
 ## 6. logger无法输出
