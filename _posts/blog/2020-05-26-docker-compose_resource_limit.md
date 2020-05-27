@@ -98,6 +98,5 @@ py-demo_1  | memory len: 2000000
 ![docker stats](../../../../public/img/docker-compose/resource_limit_docker_stats.png)
 
 
-
 结果表明：docker-compose v3 下, 配合 `docker-compose --compatibility  up` 可以限制容器使用资源.
 
