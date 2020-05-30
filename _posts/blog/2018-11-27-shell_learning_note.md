@@ -33,7 +33,8 @@ docker image rm $(docker image ls -q redis)
 
 `py_cmd.py`模拟一个简单的 echo 命令:
 
-```python
+```
+
 import argparse
 
 
@@ -48,12 +49,12 @@ def echo_name(argv=None):
 
 if __name__ == '__main__':
     echo_name()
+
 ```
 
 示例命令:
 
-```shell script
-
+```
 name="M 1 M"
 
 c1=$(python py_cmd.py --name='${name}' )
@@ -61,6 +62,7 @@ echo "case1 ${c1}"  # 输出: case1 name_${name}
 
 c2=$(python py_cmd.py --name="${name}" )
 echo "case2 ${c2}"  # 输出: case2 name_M 1 M
+
 ```
 
 ## 2. sudo执行echo命令
@@ -70,6 +72,7 @@ sudo sh -c "echo '{
   \"registry-mirrors\": [\"https://registry.docker-cn.com\"]
 }' >> /etc/docker/daemon.json"
 ```
+
 ## 3. 清空文件
 
 ```echo -n > ~/xx.conf```
