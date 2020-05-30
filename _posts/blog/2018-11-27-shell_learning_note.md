@@ -351,3 +351,13 @@ popd
 ls ./
 
 ```
+
+## 21. 获取文件 basename
+
+``` 
+FILE="/home/vivek/lighttpd.tar.gz"
+basename "$FILE"  # 输出: lighttpd.tar.gz
+f="$(basename -- $FILE)"
+echo "$f"  # 输出: lighttpd.tar.gz
+```
+
