@@ -12,6 +12,7 @@ description:
 # shell学习笔记
 
 ## 1. 一个命令的结果填充到另一个命令中
+
 ssh例子:
 
 ```
@@ -25,6 +26,43 @@ docker例子:
 # 删除所有仓库名为 redis 的镜像：
 docker image rm $(docker image ls -q redis)
 ```
+
+*需要注意的是, 单引号与双引号的效果不一样, 需要使用双引号*
+
+举例说明如下, 
+
+`py_cmd.py`模拟一个简单的 echo 命令:
+
+```python
+import argparse
+
+
+def echo_name(argv=None):
+    parser = argparse.ArgumentParser(description='demo')
+
+    # name
+    parser.add_argument('--name', type=str, help='name')
+    args = parser.parse_args(args=argv)
+    print("name_{}".format(args.name))
+
+
+if __name__ == '__main__':
+    echo_name()
+```
+
+示例命令:
+
+```shell script
+
+name="M 1 M"
+
+c1=$(python py_cmd.py --name='${name}' )
+echo "case1 ${c1}"  # 输出: case1 name_${name} 
+
+c2=$(python py_cmd.py --name="${name}" )
+echo "case2 ${c2}"  # 输出: case2 name_M 1 M
+```
+
 ## 2. sudo执行echo命令
 
 ```
