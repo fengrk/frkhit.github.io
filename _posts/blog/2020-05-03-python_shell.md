@@ -164,3 +164,35 @@ py-cmd    |     __init__.py
 py-cmd    | 
 
 ```
+
+## 3. shell 执行 python 脚本
+
+### 3.1 使用 `python -c` 执行 python 代码
+
+```shell script
+#!/bin/bash
+
+python -c 'import os; print(os.environ)'
+
+```
+
+### 3.2 拷贝 python 源码到 shell 脚本
+
+```shell script
+#!/bin/bash
+
+tmp_py="tmp.py"
+
+# 代码行
+cat > ${tmp_py} <<EOF
+import os
+print(os.environ)
+EOF
+
+# 执行
+python -u ${tmp_py}
+
+# 删除 临时 python 文件
+rm ${tmp_py}
+
+```

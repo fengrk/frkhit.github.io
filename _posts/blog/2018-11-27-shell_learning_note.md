@@ -361,3 +361,16 @@ f="$(basename -- $FILE)"
 echo "$f"  # 输出: lighttpd.tar.gz
 ```
 
+## 22. 多行文本
+
+``` 
+config_file="config"
+
+# 代码行
+cat > ${config_file} <<EOF
+a=b
+b=c
+x=y
+EOF
+```
+

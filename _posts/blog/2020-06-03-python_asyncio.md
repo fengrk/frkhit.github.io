@@ -10,7 +10,7 @@ description:
 
 # python asyncio 使用总结
 
-## 多次创建 `event_loop`
+## 1. 多次创建 `event_loop`
 
 ```python 
 
@@ -31,7 +31,7 @@ for _ in range(100):
 
 ```
 
-## `This event loop is already running`
+## 2. `This event loop is already running`
 
 ```python
 
