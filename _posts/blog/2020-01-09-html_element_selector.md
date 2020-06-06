@@ -60,3 +60,16 @@ entries = response.css('.post-list > li')
 
 
 ## 2. bs4系列
+
+## 3. puppeteer/chrome
+
+### 3.1 css
+
+- 多个 class: $(".a.b"). 错误 $(".a .b")
+
+
+
+### 3.2 xpath
+
+- 多个 class, 仅使用一个 class 选择: `//div[contains(@class, ".a") and contains(text(), "4")]`
+`
