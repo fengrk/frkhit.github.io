@@ -329,3 +329,32 @@ def demo_sum(self, a: float, b: float, c: float) -> float:
 要点:
 - @app.task 增加`bind=True`
 - task 增加 `self`
+
+## 5. send_task by name
+
+celery 提供`send_task` 方法, 使用名称发送任务.
+
+使用示例:
+
+```python
+
+from celery import Celery
+celery_app = Celery("app")
+
+# define tasks
+celery_app.conf.task_routes = {
+    'celery_proj.other_apps.task_1': {
+        'queue': 'c-low',
+        'routing_key': 'c-low.priority',
+    },
+    'celery_proj.other_apps.task_2': {
+        'queue': 'a-high',
+        'routing_key': 'a-high.priority',
+    },
+}
+
+# send task
+celery_app.send_task('celery_proj.other_apps.task_1', kwargs={}, priority=1)
+celery_app.send_task('celery_proj.other_apps.task_2', kwargs={},)  # default priority
+
+```
