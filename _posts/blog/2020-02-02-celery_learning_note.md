@@ -249,3 +249,83 @@ celery -A celery_proj.scheduler_main worker --loglevel=info -n celery-scheduler-
 ```
 docker-compose up -d
 ```
+
+## 4. 在 task 中获取 task_id
+
+
+本示例提供在 task 中获取 task_id 的方法:
+
+构建装饰符
+
+```python
+
+import functools
+import time
+
+def demo_add(a: float, b: float) -> float:
+    return a + b
+
+def simple_log(func):
+    @functools.wraps(func)
+    def wrapper(*args, **kw):
+        time_start = time.time()
+        try:
+            result = func(*args, **kw)
+            print('call {}, time_cost {:.2f}, success True'.format(func.__name__, time.time() - time_start))
+            return result
+        except:
+            print('call {}, time_cost {:.2f}, success False'.format(func.__name__, time.time() - time_start))
+            raise
+
+    return wrapper
+
+
+def celery_task_logger(func):
+    """计算时间"""
+
+    @functools.wraps(func)
+    def wrapper(*args, **kw):
+        _time_start = time.time()
+        task_id = args[0].request.id
+        try:
+            print("[task {}]task start!".format(task_id))
+        except Exception as e:
+            print(e)
+        result = func(*args, **kw)
+        _time_cost = time.time() - _time_start
+        if _time_cost > 1:
+            try:
+                print("[task {}]task finished! Time cost {:.2f}s".format(task_id, _time_cost))
+            except Exception as e:
+                print(e)
+        return result
+
+    return wrapper
+```
+
+装饰符使用:
+
+```
+from celery import Celery
+
+APP_NAME = 'celery-project'
+
+celery_app = Celery(APP_NAME)
+celery_app.config_from_object('celery_proj.config')
+
+
+
+@celery_app.task(bind=True)
+@celery_task_logger
+@simple_log
+def demo_sum(self, a: float, b: float, c: float) -> float:
+    time.sleep(5)
+    _result = demo_add(demo_add(a, b), c)
+    print("demo_sum: a {}, b {}, c {} => {}".format(a, b, c, _result))
+    return _result
+
+```
+
+要点:
+- @app.task 增加`bind=True`
+- task 增加 `self`
