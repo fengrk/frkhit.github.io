@@ -374,3 +374,21 @@ x=y
 EOF
 ```
 
+## 23. linux挂载swap文件
+
+```
+# 挂载 swap
+
+sudo dd if=/dev/zero of=/swapfile bs=1M count=8192 && \
+sudo mkswap /swapfile && \
+sudo chmod 600 /swapfile && \
+sudo swapon /swapfile && \
+sudo sh -c "echo '/swapfile swap swap defaults 0 0' >> /etc/fstab " && \
+sudo sh -c "echo 10 >/proc/sys/vm/swappiness"
+
+# 停用 swap
+sudo swapoff /swapfile && \
+sudo rm /swapfile
+
+```
+
