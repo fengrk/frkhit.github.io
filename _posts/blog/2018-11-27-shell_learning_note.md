@@ -392,3 +392,14 @@ sudo rm /swapfile
 
 ```
 
+## 24. grep执行二进制文件过滤
+
+日志文件 `file_with_bin.log` 包含二进制数据.
+ 
+直接执行 grep 过滤 `cat file_with_bin.log | grep "2020-07-18 01"` 时, 报错 `Binary file (standard input) matches`.
+
+解决方法是, 使用 `-a` 参数:
+
+```
+cat file_with_bin.log | grep -a -20 "2020-07-18 01"
+```

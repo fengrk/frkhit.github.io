@@ -16,8 +16,7 @@ description:
 
 mac下安装 graphviz, gprof2dot
 
-```shell script
-
+```
 brew install graphviz  # 提供 dot 命令
 python3 -m pip install gprof2dot
 
@@ -27,7 +26,7 @@ python3 -m pip install gprof2dot
 
 耗时程序 `slow.py` : 
 
-```python
+```
 import time
 
 def do_job(count):
@@ -49,7 +48,7 @@ if __name__ == '__main__':
 
 耗时程序 `quick.py` : 
 
-```python
+```
 import time
 
 def do_job(count):
@@ -71,7 +70,7 @@ if __name__ == '__main__':
 
 分析慢程序:
 
-```shell script
+```
 
 python -m cProfile -o slow.pstats slow.py
 python -m gprof2dot -f pstats slow.pstats | dot -Tpng -o slow.png
@@ -85,7 +84,7 @@ python -m gprof2dot -f pstats slow.pstats | dot -Tpng -o slow.png
 
 分析快程序:
 
-```shell script
+```
 
 python -m cProfile -o quick.pstats slow.py
 python -m gprof2dot -f pstats quick.pstats | dot -Tpng -o quick.png
