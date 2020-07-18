@@ -17,13 +17,7 @@ description:
 
 # mac
 brew install graphviz  # 提供 dot 命令
-Python3 -m pip install gprof2dot
-
-brew install graphviz  # 提供 dot 命令
-Python3 -m pip install gprof2dot
-
-python -m cProfile -o output.pstats run.py
-python -m gprof2dot -f pstats output.pstats | dot -Tpdf -o output.pdf
+python3 -m pip install gprof2dot
 
 ```
 
