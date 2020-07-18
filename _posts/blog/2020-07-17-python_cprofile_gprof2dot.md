@@ -13,9 +13,11 @@ description:
 
 ## 1. 环境准备
 
+
+mac下安装 graphviz, gprof2dot
+
 ```shell script
 
-# mac
 brew install graphviz  # 提供 dot 命令
 python3 -m pip install gprof2dot
 
@@ -70,11 +72,13 @@ if __name__ == '__main__':
 分析慢程序:
 
 ```shell script
+
 python -m cProfile -o slow.pstats slow.py
 python -m gprof2dot -f pstats slow.pstats | dot -Tpng -o slow.png
+
 ```
 
-慢程序的结果如下, 耗时瓶颈在 `do_job` 中的 `time.sleep`
+慢程序的结果如下, 耗时瓶颈在 `do_job` 中的 `time.sleep`.
 
 ![慢程序cpu 耗时分析](../../../../public/img/cprofile_gprof2dot/slow.png)
 
@@ -82,8 +86,10 @@ python -m gprof2dot -f pstats slow.pstats | dot -Tpng -o slow.png
 分析快程序:
 
 ```shell script
+
 python -m cProfile -o quick.pstats slow.py
 python -m gprof2dot -f pstats quick.pstats | dot -Tpng -o quick.png
+
 ```
 
 快程序的结果如下, 耗时瓶颈在 `do_job` 中的 `time.sleep`, 但 `time.sleep` 的耗时占比已经下降.
