@@ -267,3 +267,7 @@ class TestPython(unittest.TestCase):
                     os.remove(file)
 
 ```
+
+## 14. 代码风格
+
+- 禁止 ide 将未使用模块清理: `from os import path  # noqa: F401`

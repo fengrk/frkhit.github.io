@@ -294,3 +294,15 @@ mkdir -p dodo && chmod 777 dodo/ -R && cd dodo/
 # run mongo tools
 docker run --rm -v $(pwd):/workdir/ -w /workdir/ mongo:4.0 mongoimport --uri "mongodb://<username>:<password>@<host1>:<port1>,<host2>:<port2>/<database>?replicaSet=mgset-123456&authSource=admin" --collection <collection> --fields <field1>,<field2> <datafile>
 ```
+
+## 5. pymongo
+
+### 5.1 正则写法
+
+`robo 3T` 中执行 `_id` 正则匹配: `db.getCollection('col').find({_id: /version1/})`
+
+需要使用 `pymongo` 执行上述搜索.
+
+上述的搜索, 可在 `robo 3T` 中使用`$regex`等效实现: `db.getCollection('col').find({"_id": {"$regex": "/version1/", "$options": 'm'}})`
+
+所以, `pymongo` 对应写法为: `collection.find({"_id": {"$regex": "/version1/", "$options": 'm'}})`
