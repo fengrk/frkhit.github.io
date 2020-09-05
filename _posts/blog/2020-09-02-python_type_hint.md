@@ -55,3 +55,15 @@ class TestTypeHint(unittest.TestCase):
         print(obj.doSomething(input_value=10))
 
 ```
+
+## 2. 获取 annotations
+
+```python
+
+def add(a: int, b: int) -> int:
+    return a + b
+
+
+print(add.__annotations__)
+# {'a': <class 'int'>, 'b': <class 'int'>, 'return': <class 'int'>}
+```
