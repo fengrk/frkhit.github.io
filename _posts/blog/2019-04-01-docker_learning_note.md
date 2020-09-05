@@ -93,6 +93,7 @@ docker run -d -v /home/ubuntu/app:/app -p 5000:5000 diy/server
 - 运行时指定时区：`docker run -d --env TZ=Asia/Shanghai ...`
 - 执行多条命令: `docker run -d -w /app frkhit/docker-python:3.6-chrome sh -c "python jd_main.py; python main.py"`
 - 查看容器变化: `docker diff <container>`
+- 改变entrypoint执行新命令: `docker run -itd --name=demo --entrypoint="tail" <image> -f /dev/null`
 
 ## 7. Dockerfile常用命令示例
 
