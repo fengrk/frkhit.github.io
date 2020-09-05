@@ -403,3 +403,18 @@ sudo rm /swapfile
 ```
 cat file_with_bin.log | grep -a -20 "2020-07-18 01"
 ```
+
+## 25. crontab/ssh 启动带gui 程序
+
+参考: [使用crontab执行GUI程序](https://blog.csdn.net/tracker_w/article/details/46573265).
+
+例如, 脚本 '/start_selenium.sh' 会以 `headless=False` 的方式, 启动 selenium, 在 ubuntu 桌面上启动 chrome 浏览器执行任务.
+
+在自己主机中, 使用 ssh 远程到上述脚本所在的 ubuntu 主机, 可以使用命令启动脚本:
+
+` export DISPLAY=:0 && ./start_selenium.sh ` 
+
+
+
+
+
