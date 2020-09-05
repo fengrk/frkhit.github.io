@@ -414,7 +414,13 @@ cat file_with_bin.log | grep -a -20 "2020-07-18 01"
 
 ` export DISPLAY=:0 && ./start_selenium.sh ` 
 
+## 26. 默认输入 yes
 
+```shell script
+
+wget http://gosspublic.alicdn.com/ossfs/ossfs_1.80.6_ubuntu18.04_amd64.deb && (yes | sudo gdebi ossfs_1.80.6_ubuntu18.04_amd64.deb )
+
+```
 
 
 
