@@ -20,7 +20,7 @@ description:
 - 获取应用列表: `adb shell pm list packages`
 - 彻底关闭应用:  `adb shell ps | grep <package_name> | awk '{print $2}' | xargs adb shell kill`
 - 启动应用: `adb shell am start -n <package_name>/<package_name>.ui.RunScriptActivity`
-
+- 覆盖安装应用(不需要重复授予权限): `adb install -r app-release.apk`
 
 ## 3. adb 授权
 
@@ -66,6 +66,15 @@ adb shell dumpsys package  <package_name>
 ```
 
 获取 `requested permissions`, 减去 `install permissions` 中 `granted=true` 的权限, 即可得到需要授权的权限.
+
+## 4. log tail
+
+```shell script
+
+pid=$(adb shell ps | grep "com.ibiliang.heartcloud" | awk '{print $2}' )
+adb logcat --pid=${pid}
+
+```
 
 
 

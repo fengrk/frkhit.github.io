@@ -13,6 +13,7 @@ description:
 
 # mac 下安装 adb
 
+## 1. 借助 airetest 安装 adb
 原理， 使用 python 包 `airtest`自带的 `adb`, 实现 adb **安装**。
 
 步骤如下：
@@ -23,3 +24,13 @@ description:
 - adb 使用： `source ~/.bash_profile && adb devices`
 
 注意，刚方法适用于 linux， 区别在于， linux 下的 adb 位于 `{your_python_path}/site-packages/airtest/core/android/static/adb/linux`目录下
+
+## 2. brew 安装(推荐)
+
+使用过程中发现, 方法一安装的 adb 版本过低, 推荐使用 brew 安装:
+
+```shell script
+
+brew cask install android-platform-tools
+
+```
