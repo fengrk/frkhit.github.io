@@ -71,8 +71,10 @@ adb shell dumpsys package  <package_name>
 
 ```shell script
 
-pid=$(adb shell ps | grep "com.ibiliang.heartcloud" | awk '{print $2}' )
-adb logcat --pid=${pid}
+adb logcat --pid=$(adb shell ps | grep "com.arkfeng.demo" | awk '{print $2}' )
+
+# tail file
+adb shell tail -f /sdcard/my_app/app.log
 
 ```
 
