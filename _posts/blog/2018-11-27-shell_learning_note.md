@@ -423,4 +423,24 @@ wget http://gosspublic.alicdn.com/ossfs/ossfs_1.80.6_ubuntu18.04_amd64.deb && (y
 ```
 
 
+## 26. crontab 查看错误日志
+
+正常条件下, crontab 执行的脚本如果出错, 在 /var/log/syslog 中 看不到有用的信息. 这时, 需要借助 `postfix` 接收crontab 的执行日志.
+
+具体原理, 可参考[迷之 crontab 异常：不运行、不报错、无日志](https://my.oschina.net/leejun2005/blog/1788342).
+
+简要流程:
+
+``` 
+# step 1 安装 postfix, 并选择 local only
+sudo apt install -y postfix
+
+# step 2 启动 postfix
+sudo service postfix start
+
+# step 3 读取 crontab 的执行日志:
+tail -f /usr/mail/root
+
+```
+
 
