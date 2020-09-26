@@ -416,14 +416,14 @@ cat file_with_bin.log | grep -a -20 "2020-07-18 01"
 
 ## 26. 默认输入 yes
 
-```shell script
+```
 
 wget http://gosspublic.alicdn.com/ossfs/ossfs_1.80.6_ubuntu18.04_amd64.deb && (yes | sudo gdebi ossfs_1.80.6_ubuntu18.04_amd64.deb )
 
 ```
 
 
-## 26. crontab 查看错误日志
+## 27. crontab 查看错误日志
 
 正常条件下, crontab 执行的脚本如果出错, 在 /var/log/syslog 中 看不到有用的信息. 这时, 需要借助 `postfix` 接收crontab 的执行日志.
 
