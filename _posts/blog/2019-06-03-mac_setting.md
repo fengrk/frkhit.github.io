@@ -106,4 +106,28 @@ alias tac='tail -r '
 
 [参考](https://stackoverflow.com/a/55733092/5588431)
 
+## 4. shell 命令
 
+### 4.1 与 linux 命令的不同
+
+`awk` 的不同:
+
+``` 
+# linux
+ps -ef | grep python | grep "main_x" | grep -v grep | awk -F '{print $2}' |xargs  kill -9
+
+# mac
+ps -ef | grep python | grep "main_x" | grep -v grep | awk '{print $2}' |xargs  kill -9
+
+```
+
+`sed` 的不同:
+
+```
+# linux
+find . -name "*.py" -exec sed -i s/print\(\"data\ is\ \{/print\(\"数据\ 是\ \{/g {} +
+
+# mac
+find . -name "*.py" -exec sed -i '' s/print\(\"data\ is\ \{/print\(\"数据\ 是\ \{/g {} +
+
+```
