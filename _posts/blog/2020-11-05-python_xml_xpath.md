@@ -104,3 +104,50 @@ class TestXmlEdit(unittest.TestCase):
 ```
 
 
+## 3. 节点搜索举例
+
+#### 多个关系
+
+``` 
+# 节点内
+resp.xpath('//node[@text="a" or @text="b"]')
+resp.xpath('//node[@text="a" and @class="X"]')
+resp.xpath('//node[( @text="a" or @text="b" ) and @class="X"]')
+resp.xpath('//node[( @text="a" or @text="b" ) and @class="X" and not(.//node[@class="X"]) ]')
+
+# 跨节点
+resp.xpath('//node[@text="a"] | //node[@text="b"]')
+
+```
+
+#### 正则匹配
+
+``` 
+namespaces={'re': "http://exslt.org/regular-expressions"}
+
+resp.xpath('//node[re:test(@class, ".*FrameLayout")]', namespaces=namespaces)
+resp.xpath('//a[re:test(@id, "^hypProduct_[0-9]+$")]', namespaces=namespaces)
+resp.xpath('//a[re:test(@class, "(?<!EditText)$")]', namespaces=namespaces)
+resp.xpath('//node[re:test(@class, ".*A") or re:test(@class, ".*B") ]', namespaces=namespaces)
+
+```
+
+#### 相对位置
+
+``` 
+# 最后一个
+resp.xpath('(//node[@text="X")])[last()]')
+
+# A -> 父 -> 父 -> B
+resp.xpath(( 
+    '//node[@text="A"]'
+    '/parent::node/parent::node/'
+    'node[@text="B"]'
+))
+```
+
+
+
+
+
+
