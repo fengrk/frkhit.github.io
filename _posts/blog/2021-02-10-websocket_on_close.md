@@ -123,5 +123,7 @@ class TestWs(unittest.TestCase):
 ````
 
 结论:
+
 1) 协程环境下, 可以使用 async def get/on_message 等方法, 将接口方法变为  awaitable 方法. 但 on_close 不能使用这个样的方式处理
+
 2) 协程方式执行on_close方法, 需要在方法内部, 使用 `asyncio.ensure_future`
