@@ -94,3 +94,52 @@ class TestAsync(unittest.TestCase):
 
 ```
 
+## 3. 非协程方法内调用协程方法
+
+```python
+import asyncio
+import logging  # noqa
+import os  # noqa
+import time
+import typing  # noqa
+import unittest
+
+
+async def async_fun():
+    await asyncio.sleep(1)
+    print("async_fun done!")
+
+
+def fun():
+    asyncio.ensure_future(async_fun())
+    print("fun")
+
+
+class TestAsyncFunc(unittest.TestCase):
+    def setUp(self) -> None:
+        pass
+
+    def testWithoutAsyncLoop(self):
+        """ """
+        fun()
+        time.sleep(5)
+
+        # output:
+        # fun
+
+    def testWitAsyncLoop(self):
+        """ """
+
+        async def main():
+            await asyncio.sleep(1)
+            fun()
+            await asyncio.sleep(5)
+
+        asyncio.run(main())
+
+        # output:
+        # fun
+        # async_fun done!
+
+
+```
