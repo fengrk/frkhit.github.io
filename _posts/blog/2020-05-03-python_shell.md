@@ -196,3 +196,26 @@ python -u ${tmp_py}
 rm ${tmp_py}
 
 ```
+
+## 3. 使用 subprocess 执行 bash脚本
+
+```python
+
+import os  # noqa
+import typing  # noqa
+import subprocess
+
+
+commands = '''
+echo "content" > ./1.txt
+echo -e "content2\n1\n2\n3\n" >> ./1.txt
+cat ./1.txt
+rm ./1.txt
+
+'''
+
+result = subprocess.check_output(commands, executable="/bin/bash", shell=True).decode("utf-8")
+
+print(result)
+
+``` 
