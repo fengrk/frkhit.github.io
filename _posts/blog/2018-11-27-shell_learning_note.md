@@ -443,4 +443,20 @@ tail -f /usr/mail/root
 
 ```
 
+## 28. 获取主机所有 ip
 
+```shell script
+
+all_ips=( "localhost" "127.0.0.1" "::1" "0.0.0.0" )
+echo ${all_ips[@]}
+for ip in $(ifconfig | grep inet | awk '{print $2}' | grep -oE "\b([0-9]{1,3}\.){3}[0-9]{1,3}\b")
+do
+    echo ${ip}
+    all_ips+=(${ip})
+done
+echo ${all_ips}
+
+sorted_unique_ips=($(echo "${all_ips[@]}" | tr ' ' '\n' | sort -u | tr '\n' ' '))
+echo ${sorted_unique_ips[@]}
+
+```
