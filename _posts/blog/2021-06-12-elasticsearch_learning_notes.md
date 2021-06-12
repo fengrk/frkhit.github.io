@@ -1,6 +1,10 @@
 ---
-layout: post title: elasticsearch 学习笔记 category: 技术 tags:
-- elasticsearch keywords:
+layout: post 
+title: elasticsearch 学习笔记 
+category: 技术 
+tags:
+  - elasticsearch 
+keywords:
 description:
 ---
 
