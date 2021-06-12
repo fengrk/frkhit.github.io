@@ -306,3 +306,87 @@ docker run --rm -v $(pwd):/workdir/ -w /workdir/ mongo:4.0 mongoimport --uri "mo
 上述的搜索, 可在 `robo 3T` 中使用`$regex`等效实现: `db.getCollection('col').find({"_id": {"$regex": "/version1/", "$options": 'm'}})`
 
 所以, `pymongo` 对应写法为: `collection.find({"_id": {"$regex": "/version1/", "$options": 'm'}})`
+
+
+### 5.2 pymongo 实现 `mongoexport` 和 `mongoimport`
+
+```python
+
+import logging  # noqa
+import os  # noqa
+import typing  # noqa
+
+import pymongo
+from bson import json_util
+from pymongo import MongoClient
+
+
+def mongo_export(client_or_uri: typing.Union[str, MongoClient], db: str, collection: str, out_file: str, query: dict = None,
+                 logger: logging.Logger = None):
+    if isinstance(client_or_uri, str):
+        mongo_client = pymongo.MongoClient(client_or_uri)
+    else:
+        mongo_client = client_or_uri
+
+    mongo_collection = mongo_client[db][collection]
+    if query:
+        qs = mongo_collection.find(query)
+    else:
+        qs = mongo_collection.find({})
+
+    date_options = json_util.JSONOptions(
+        datetime_representation=json_util.DatetimeRepresentation.ISO8601)
+
+    _success_count = 0
+    with open(out_file, "w") as f:
+        for item in qs:
+            f.write(json_util.dumps(item, sort_keys=True, ensure_ascii=False, json_options=date_options) + "\n")
+            _success_count += 1
+
+    msg = "{} records write in file: {}!".format(_success_count, out_file)
+    if logger:
+        logger.info(msg)
+    else:
+        print(msg)
+
+
+def mongo_import(client_or_uri: typing.Union[str, MongoClient], db: str, collection: str, backup_file: str, logger: logging.Logger = None,
+                 drop: bool = False):
+    if isinstance(client_or_uri, str):
+        mongo_client = pymongo.MongoClient(client_or_uri)
+    else:
+        mongo_client = client_or_uri
+
+    mongo_collection = mongo_client[db][collection]
+
+    date_options = json_util.JSONOptions(
+        datetime_representation=json_util.DatetimeRepresentation.ISO8601)
+
+    item_list = []
+    with open(backup_file, "r") as f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue
+
+            try:
+                item = json_util.loads(line, json_options=date_options)
+                item_list.append(item)
+            except Exception as e:
+                if logger:
+                    logger.error("error is {}\nline:\n{}".format(e, line), exc_info=True)
+
+    if item_list and drop:
+        mongo_collection.delete_many(filter={})
+
+    if item_list:
+        mongo_collection.insert_many(documents=item_list)
+
+    msg = "{} records from file {} import to collection: {}!".format(len(item_list), backup_file, collection)
+    if logger:
+        logger.info(msg)
+    else:
+        print(msg)
+
+
+```
