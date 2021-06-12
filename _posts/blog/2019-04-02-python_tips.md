@@ -271,3 +271,32 @@ class TestPython(unittest.TestCase):
 ## 14. 代码风格
 
 - 禁止 ide 将未使用模块清理: `from os import path  # noqa: F401`
+
+## 15. pickle 大文件
+
+```python
+
+import logging  # noqa
+import os  # noqa
+import typing  # noqa
+import pickle
+
+
+def dump_cache(obj, cache_file: str):
+    max_bytes = 2 ** 31 - 1
+    bytes_out = pickle.dumps(obj, protocol=4)
+    with open(cache_file, 'wb') as f_out:
+        for idx in range(0, len(bytes_out), max_bytes):
+            f_out.write(bytes_out[idx:idx + max_bytes])
+
+
+def load_cache(cache_file: str) -> object:
+    max_bytes = 2 ** 31 - 1
+    bytes_in = bytearray(0)
+    input_size = os.path.getsize(cache_file)
+    with open(cache_file, 'rb') as f_in:
+        for _ in range(0, input_size, max_bytes):
+            bytes_in += f_in.read(max_bytes)
+    return pickle.loads(bytes_in)
+
+```
